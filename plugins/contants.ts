@@ -1,8 +1,8 @@
 //@ts-expect-error
 export const MARKET_CONTRACT_ADDRESS =
-  df.ethConnection.getProvider().network.chainId == 300
-    ? "0x06187833f809E41511A68276369B72C480adA113"
-    : "0x4F3Dce4014f804c313d9c28B513C99e40316Bd11";
+  df.ethConnection.getProvider().network.chainId == 31337
+    ? "0x78978D53E07E8A45830e2A623a3c58e2e1FecD4c"
+    : "0x78978D53E07E8A45830e2A623a3c58e2e1FecD4c";
 //@ts-expect-error
 export const TOKENS_CONTRACT_ADDRESS: string =
   df.contractsAPI.contractAddress ||

@@ -39473,7 +39473,7 @@ var import_types3 = __toModule(require_dist());
 var import_react2 = __toModule(require_react());
 
 // plugins/contants.ts
-var MARKET_CONTRACT_ADDRESS = df.ethConnection.getProvider().network.chainId == 300 ? "0x06187833f809E41511A68276369B72C480adA113" : "0x4F3Dce4014f804c313d9c28B513C99e40316Bd11";
+var MARKET_CONTRACT_ADDRESS = df.ethConnection.getProvider().network.chainId == 31337 ? "0x78978D53E07E8A45830e2A623a3c58e2e1FecD4c" : "0x78978D53E07E8A45830e2A623a3c58e2e1FecD4c";
 var TOKENS_CONTRACT_ADDRESS = df.contractsAPI.contractAddress || "0x621ce133521c3B1cf11C0b9423406F01835af0ee";
 var TOKENS_APPROVAL_ABI = [
   {

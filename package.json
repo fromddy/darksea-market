@@ -1,6 +1,6 @@
 {
-  "name": "df-artifact-market",
-  "version": "1.0.5",
+  "name": "dfares-artifact-market",
+  "version": "1.0.0",
   "license": "GPL-3.0",
   "private": true,
   "files": [],
@@ -28,6 +28,7 @@
     "@ethersproject/bignumber": "^5.2.0",
     "@ethersproject/units": "^5.1.0",
     "@openzeppelin/contracts": "^4.9.6",
+    "@openzeppelin/contracts-upgradeable": "^4.9.6",
     "@projectsophon/df-plugin-dev-server": "^1.4.0",
     "@types/node": "^15.3.0",
     "color": "^3.0.2",
