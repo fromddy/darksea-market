@@ -1,7 +1,7 @@
-import { ArtifactRarity, ArtifactRarityNames } from '@darkforest_eth/types';
-import React, { Fragment } from 'react';
-import styled, { keyframes } from 'styled-components';
-import { RarityColors } from '../../helpers/styles';
+import { ArtifactRarity, ArtifactRarityNames } from "@dfares/types";
+import React, { Fragment } from "react";
+import styled, { keyframes } from "styled-components";
+import { RarityColors } from "../../helpers/styles";
 
 const color = keyframes`
   0% {
@@ -27,19 +27,19 @@ const Anim = styled.span`
 export function LegendaryLabelText({ text }: { text: string }) {
   return (
     <Anim>
-        {text.split('').map((c, i) => (
-            <AnimDelay i={i} key={i}>
-                {c === ' ' ? <>&nbsp;</> : c}
-            </AnimDelay>
-        ))}
+      {text.split("").map((c, i) => (
+        <AnimDelay i={i} key={i}>
+          {c === " " ? <>&nbsp;</> : c}
+        </AnimDelay>
+      ))}
     </Anim>
-);
+  );
 }
 
 function LegendaryLabelRaw() {
-    return (
-        <LegendaryLabelText text={ArtifactRarityNames[ArtifactRarity.Legendary]} />
-    );
+  return (
+    <LegendaryLabelText text={ArtifactRarityNames[ArtifactRarity.Legendary]} />
+  );
 }
 
 export const LegendaryLabel = React.memo(LegendaryLabelRaw);

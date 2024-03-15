@@ -1,31 +1,34 @@
-import React, { forwardRef } from 'react';
-import styled, { css } from 'styled-components';
-import dfstyles from '../helpers/dfstyles';
+import React, { forwardRef } from "react";
+import styled, { css } from "styled-components";
+import dfstyles from "../helpers/dfstyles";
 
 export const Input = forwardRef(InputImpl);
 
 interface InputProps {
-    wide?: boolean;
+  wide?: boolean;
 }
 
 function InputImpl(
-    props: React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> &
-        InputProps,
-    ref: React.Ref<HTMLInputElement>
+  props: React.DetailedHTMLProps<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    HTMLInputElement
+  > &
+    InputProps,
+  ref: React.Ref<HTMLInputElement>
 ) {
-    return (
-        <DFInput
-            {...props}
-            ref={ref}
-            disabled={false}
-            onChange={props.disabled ? () => { } : props.onChange}
-            onKeyUp={(e) => {
-                if (props.onKeyUp) {
-                    props.onKeyUp(e);
-                }
-            }}
-        />
-    );
+  return (
+    <DFInput
+      {...props}
+      ref={ref}
+      disabled={false}
+      onChange={props.disabled ? () => {} : props.onChange}
+      onKeyUp={(e) => {
+        if (props.onKeyUp) {
+          props.onKeyUp(e);
+        }
+      }}
+    />
+  );
 }
 
 export const DFInput = styled.input`

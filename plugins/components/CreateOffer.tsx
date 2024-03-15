@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import _ from 'lodash';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import _ from "lodash";
+import styled from "styled-components";
 import { Btn } from "./Btn";
 import { ButtonGroup, Select } from "./CoreUI";
 import { Input } from "./Input";
@@ -8,7 +8,12 @@ import { callAction, getRandomActionId } from "../helpers/helpers";
 import { utils, BigNumber } from "ethers";
 import { useContract } from "../helpers/AppHooks";
 import { TOKENS_CONTRACT_ADDRESS, notifyManager } from "../contants";
-import { ArtifactRarity, ArtifactRarityNames, ArtifactType, ArtifactTypeNames } from "@darkforest_eth/types";
+import {
+  ArtifactRarity,
+  ArtifactRarityNames,
+  ArtifactType,
+  ArtifactTypeNames,
+} from "@dfares/types";
 
 const OfferDetailWrapper = styled.div`
   min-height: 128px;
@@ -40,26 +45,34 @@ const OfferDetailWrapper = styled.div`
 const Row = styled.div`
   display: flex;
   padding: 5px;
-`
+`;
 
 const Center = styled.div`
   text-align: center;
   margin: 1em;
-`
+`;
 
-const Price  = styled.div`
+const Price = styled.div`
   font-size: 2em;
   font-weight: bold;
   text-align: center;
 `;
 
-const artifactTypes = _.range(ArtifactType.BlackDomain + 1).map(i => {
-  return <option value={i} key={i}>{i > 0 ? ArtifactTypeNames[i] : "Any Type"}</option>
+const artifactTypes = _.range(ArtifactType.BlackDomain + 1).map((i) => {
+  return (
+    <option value={i} key={i}>
+      {i > 0 ? ArtifactTypeNames[i] : "Any Type"}
+    </option>
+  );
 });
 
-const rarities = _.range(1, ArtifactRarity.Mythic + 1).map(i => {
-  return <option value={i} key={i}>{ArtifactRarityNames[i]}</option>
-})
+const rarities = _.range(1, ArtifactRarity.Mythic + 1).map((i) => {
+  return (
+    <option value={i} key={i}>
+      {ArtifactRarityNames[i]}
+    </option>
+  );
+});
 
 export function CreateOffer() {
   const { market } = useContract();
@@ -92,26 +105,36 @@ export function CreateOffer() {
   function create() {
     if (!processing) {
       setProcessing(true);
-      let methodName = 'placeOffer';
+      let methodName = "placeOffer";
       const overrids = {
-        value: BigNumber.from(utils.parseEther((+price * +qty).toString())).toString(),
+        value: BigNumber.from(
+          utils.parseEther((+price * +qty).toString())
+        ).toString(),
         gasLimit: 5000000,
         gasPrice: undefined,
       };
-      callAction(market, methodName,
-        [TOKENS_CONTRACT_ADDRESS,
+      callAction(
+        market,
+        methodName,
+        [
+          TOKENS_CONTRACT_ADDRESS,
           utils.parseEther(price.toString()),
           BigNumber.from(qty),
           rarity,
-          artifactType
-        ], overrids).then(() => {
+          artifactType,
+        ],
+        overrids
+      )
+        .then(() => {
           setPrice("");
           setQty("1");
           setActive(false);
-        }).catch((err) => {
+        })
+        .catch((err) => {
           console.error(err);
           notifyManager.txInitError(methodName, err.message);
-        }).finally(() => {
+        })
+        .finally(() => {
           setProcessing(false);
         });
     }
@@ -121,49 +144,86 @@ export function CreateOffer() {
     e.stopPropagation();
   }
 
-  return (
-    active ?
-      <OfferDetailWrapper>
-        <Row>
-          <div className='statrow'>
-            <span>Type</span>
-            <span>
-              <Select wide={true} value={artifactType} onChange={(e) => setArtifactType(e.target.value)}>
-                {artifactTypes}
-              </Select>
-            </span>
-          </div>
-          <div className='statrow'>
-            <span>Rarity</span>
-            <span>
-              <Select wide={true} value={rarity} onChange={(e) => setRarity(e.target.value)}>
-                {rarities}
-              </Select>
-            </span>
-          </div>
-        </Row>
-        <Row>
-          <div className='statrow'>
-            <span>Price</span>
-            <span><Input placeholder="XDAI" wide={true} type="number" value={price} onChange={change} onKeyUp={onKeyUp} step={0.01} /></span>
-          </div>
-          <div className='statrow'>
-            <span>Qty.</span>
-            <span><Input wide={true} type="number" value={qty} onChange={changeQty} onKeyUp={onKeyUp} step={1} /></span>
-          </div>
-        </Row>
-        <div>
-          <Center>
-            Amount: <Price>{utils.formatEther(utils.parseEther((+price * +qty).toString()))} xDai</Price>
-          </Center>
+  return active ? (
+    <OfferDetailWrapper>
+      <Row>
+        <div className="statrow">
+          <span>Type</span>
+          <span>
+            <Select
+              wide={true}
+              value={artifactType}
+              onChange={(e) => setArtifactType(e.target.value)}
+            >
+              {artifactTypes}
+            </Select>
+          </span>
         </div>
-        <div>
-          <ButtonGroup>
-            <Btn className="btn" disabled={processing} onClick={create}>{processing ? 'Waiting' : 'Create'}</Btn>
-            <Btn onClick={() => setActive(false)} className="btn">Cancel</Btn>
-          </ButtonGroup>
+        <div className="statrow">
+          <span>Rarity</span>
+          <span>
+            <Select
+              wide={true}
+              value={rarity}
+              onChange={(e) => setRarity(e.target.value)}
+            >
+              {rarities}
+            </Select>
+          </span>
         </div>
-      </OfferDetailWrapper> :
-      <Center><Btn onClick={() => setActive(true)}>Create New Offer</Btn></Center>
+      </Row>
+      <Row>
+        <div className="statrow">
+          <span>Price</span>
+          <span>
+            <Input
+              placeholder="XDAI"
+              wide={true}
+              type="number"
+              value={price}
+              onChange={change}
+              onKeyUp={onKeyUp}
+              step={0.01}
+            />
+          </span>
+        </div>
+        <div className="statrow">
+          <span>Qty.</span>
+          <span>
+            <Input
+              wide={true}
+              type="number"
+              value={qty}
+              onChange={changeQty}
+              onKeyUp={onKeyUp}
+              step={1}
+            />
+          </span>
+        </div>
+      </Row>
+      <div>
+        <Center>
+          Amount:{" "}
+          <Price>
+            {utils.formatEther(utils.parseEther((+price * +qty).toString()))}{" "}
+            xDai
+          </Price>
+        </Center>
+      </div>
+      <div>
+        <ButtonGroup>
+          <Btn className="btn" disabled={processing} onClick={create}>
+            {processing ? "Waiting" : "Create"}
+          </Btn>
+          <Btn onClick={() => setActive(false)} className="btn">
+            Cancel
+          </Btn>
+        </ButtonGroup>
+      </div>
+    </OfferDetailWrapper>
+  ) : (
+    <Center>
+      <Btn onClick={() => setActive(true)}>Create New Offer</Btn>
+    </Center>
   );
 }
