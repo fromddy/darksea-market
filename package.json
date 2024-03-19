@@ -8,37 +8,31 @@
     "node": "^18"
   },
   "scripts": {
+    "hardhat:deploy": "npx hardhat ignition deploy ignition/modules/DarkSea.ts  --network hardhat",
+    "redstoneTestnet:deploy": "npx hardhat ignition deploy ignition/modules/DarkSea.ts  --network redstoneTestnet",
     "format": "prettier --write .",
     "start": "df-plugin-dev-server --glob plugins/*.tsx",
     "build": "df-plugin-dev-server bundle --glob plugins/*.tsx --outdir=dest/"
   },
   "dependencies": {
-    "@dfares/network": "^6.8.6",
+    "@dfares/network": "^6.8.7",
     "bufferutil": "^4.0.6",
     "n": "^7.3.1",
-    "react-is": "^17.0.2",
-    "yarn": "^1.22.11"
+    "react-is": "^17.0.2"
   },
   "devDependencies": {
-    "@dfares/constants": "^6.8.6",
-    "@dfares/contracts": "^6.8.6",
-    "@dfares/serde": "^6.8.6",
-    "@dfares/snarks": "^6.8.6",
-    "@dfares/types": "^6.8.6",
-    "@ethersproject/bignumber": "^5.2.0",
-    "@ethersproject/units": "^5.1.0",
-    "@openzeppelin/contracts": "^4.9.6",
-    "@openzeppelin/contracts-upgradeable": "^4.9.6",
+    "@nomicfoundation/hardhat-ignition-ethers": "^0.15.0",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@openzeppelin/contracts-upgradeable": "4.7.3",
+    "dotenv": "^16.4.5",
+    "hardhat": "^2.22.1",
+    "typescript": "^5.4.2",
+    "@dfares/constants": "^6.8.7",
+    "@dfares/contracts": "^6.8.7",
+    "@dfares/serde": "^6.8.7",
+    "@dfares/snarks": "^6.8.7",
+    "@dfares/types": "^6.8.7",
     "@projectsophon/df-plugin-dev-server": "^1.4.0",
-    "@types/node": "^15.3.0",
-    "color": "^3.0.2",
-    "dotenv": "^10.0.0",
-    "esbuild": "^0.12.5",
-    "eslint": "^7.26.0",
-    "ethereum-waffle": "^3.0.0",
-    "ethers": "^5.0.0",
-    "htm": "3.0.4",
-    "preact": "^10.5.14",
     "react": "^16.9.0",
     "react-dom": "^16.12.0",
     "react-hot-loader": "^4.13.0",
@@ -47,8 +41,11 @@
     "solhint": "^3.3.4",
     "stable": "^0.1.8",
     "styled-components": "^5.0.1",
-    "ts-node": "^9.1.1",
-    "typechain": "^5.0.0",
-    "typescript": "^4.2.4"
+    "color": "^3.0.2",
+    "esbuild": "^0.12.5",
+    "eslint": "^7.26.0",
+    "htm": "3.0.4",
+    "preact": "^10.5.14",
+    "ethers": "^5.0.0"
   }
 }

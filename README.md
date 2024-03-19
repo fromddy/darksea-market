@@ -1,6 +1,22 @@
+
+
+# Update
+
+```
+npm install --force
+yarn start
+export { default } from "http://127.0.0.1:2222/DarkSeaMarketPlugin.js";
+```
+
+
+
+
+# DarkSea Market
+
 <div align="center">
 	<img width="400" src="https://user-images.githubusercontent.com/3327253/130274396-5b016393-d6f2-4eba-9660-92a2983c8dd5.jpg" alt="DarkSea Market">
 </div>
+
 
 <p align="center">
 	<b>DarkSea Market</b>
@@ -10,7 +26,7 @@
   Contributor: <a href="https://twitter.com/snowtigersoft">@snowtigersoft</a>
 </p>
 <p align="center">
-❤ <a href="https://twitter.com/darkforest_eth">@dfares</a>❤
+❤ <a href="https://twitter.com/darkforest_eth">@darkforest_eth</a>❤
 <p align="center">
 	 <a href="https://buidl.mirror.xyz/0I9oYGGKOxDrb2m8OjubyxjU4wYbs9Zp49c0IO2OwUc">Guild Waterdrop</a>
 	🦾<a href="https://twitter.com/marrowdao">MarrowDAO</a>

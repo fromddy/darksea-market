@@ -102,3 +102,31 @@ dist
 
 # TernJS port file
 .tern-port
+
+
+
+node_modules
+.env
+.DS_Store
+contracts/.DS_Store
+.vscode 
+tsconfig.json
+
+# Hardhat files
+/cache
+/artifacts
+
+# TypeChain files
+/typechain
+/typechain-types
+
+# solidity-coverage files
+/coverage
+/coverage.json
+
+# ignition
+/ignition/deployments
+
+/dest
+
+

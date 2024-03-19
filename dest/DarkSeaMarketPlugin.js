@@ -19392,7 +19392,7 @@ var require_artifact = __commonJS({
       BlackDomain: 9,
       IceLink: 10,
       FireLink: 11,
-      SoulSwap: 12,
+      Kardashev: 12,
       Bomb: 13,
       StellarShield: 14,
       BlindBox: 15,
@@ -19417,7 +19417,7 @@ var require_artifact = __commonJS({
       [exports.ArtifactType.BloomFilter]: "Bloom Filter",
       [exports.ArtifactType.IceLink]: "Ice Link",
       [exports.ArtifactType.FireLink]: "Fire Link",
-      [exports.ArtifactType.SoulSwap]: "Soul Swap",
+      [exports.ArtifactType.Kardashev]: "Kardashev",
       [exports.ArtifactType.Bomb]: "Bomb",
       [exports.ArtifactType.StellarShield]: "Stellar Shield",
       [exports.ArtifactType.BlindBox]: "Blind Box",
@@ -19522,6 +19522,14 @@ var require_avatar = __commonJS({
       [exports.AvatarType.Blue]: "blue",
       [exports.AvatarType.DeFi3]: "defi3"
     };
+  }
+});
+
+// node_modules/@dfares/types/dist/blue_zones.js
+var require_blue_zones = __commonJS({
+  "node_modules/@dfares/types/dist/blue_zones.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
   }
 });
 
@@ -19666,6 +19674,14 @@ var require_hat = __commonJS({
 // node_modules/@dfares/types/dist/identifier.js
 var require_identifier = __commonJS({
   "node_modules/@dfares/types/dist/identifier.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+  }
+});
+
+// node_modules/@dfares/types/dist/kardashev.js
+var require_kardashev = __commonJS({
+  "node_modules/@dfares/types/dist/kardashev.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
   }
@@ -20100,7 +20116,8 @@ var require_renderer = __commonJS({
       QuasarBody: 23,
       QuasarRay: 24,
       CaptureZone: 25,
-      PinkZone: 26
+      PinkZone: 26,
+      BlueZone: 27
     };
   }
 });
@@ -20242,6 +20259,7 @@ var require_dist = __commonJS({
     __exportStar(require_arrival(), exports);
     __exportStar(require_artifact(), exports);
     __exportStar(require_avatar(), exports);
+    __exportStar(require_blue_zones(), exports);
     __exportStar(require_burn(), exports);
     __exportStar(require_capture_zones(), exports);
     __exportStar(require_claim(), exports);
@@ -20252,6 +20270,7 @@ var require_dist = __commonJS({
     __exportStar(require_gas_prices(), exports);
     __exportStar(require_hat(), exports);
     __exportStar(require_identifier(), exports);
+    __exportStar(require_kardashev(), exports);
     __exportStar(require_logo(), exports);
     __exportStar(require_meme(), exports);
     __exportStar(require_modal(), exports);
@@ -20272,15 +20291,15 @@ var require_dist = __commonJS({
   }
 });
 
-// (disabled):node_modules/buffer/index.js
+// (disabled):buffer
 var require_buffer = __commonJS({
-  "(disabled):node_modules/buffer/index.js"() {
+  "(disabled):buffer"() {
   }
 });
 
-// node_modules/@ethersproject/bignumber/node_modules/bn.js/lib/bn.js
+// node_modules/bn.js/lib/bn.js
 var require_bn = __commonJS({
-  "node_modules/@ethersproject/bignumber/node_modules/bn.js/lib/bn.js"(exports, module) {
+  "node_modules/bn.js/lib/bn.js"(exports, module) {
     (function(module2, exports2) {
       "use strict";
       function assert2(val, msg) {
@@ -23844,2923 +23863,6 @@ var require_sha3 = __commonJS({
   }
 });
 
-// node_modules/@ethersproject/signing-key/node_modules/bn.js/lib/bn.js
-var require_bn2 = __commonJS({
-  "node_modules/@ethersproject/signing-key/node_modules/bn.js/lib/bn.js"(exports, module) {
-    (function(module2, exports2) {
-      "use strict";
-      function assert2(val, msg) {
-        if (!val)
-          throw new Error(msg || "Assertion failed");
-      }
-      function inherits(ctor, superCtor) {
-        ctor.super_ = superCtor;
-        var TempCtor = function() {
-        };
-        TempCtor.prototype = superCtor.prototype;
-        ctor.prototype = new TempCtor();
-        ctor.prototype.constructor = ctor;
-      }
-      function BN3(number, base2, endian) {
-        if (BN3.isBN(number)) {
-          return number;
-        }
-        this.negative = 0;
-        this.words = null;
-        this.length = 0;
-        this.red = null;
-        if (number !== null) {
-          if (base2 === "le" || base2 === "be") {
-            endian = base2;
-            base2 = 10;
-          }
-          this._init(number || 0, base2 || 10, endian || "be");
-        }
-      }
-      if (typeof module2 === "object") {
-        module2.exports = BN3;
-      } else {
-        exports2.BN = BN3;
-      }
-      BN3.BN = BN3;
-      BN3.wordSize = 26;
-      var Buffer2;
-      try {
-        if (typeof window !== "undefined" && typeof window.Buffer !== "undefined") {
-          Buffer2 = window.Buffer;
-        } else {
-          Buffer2 = require_buffer().Buffer;
-        }
-      } catch (e2) {
-      }
-      BN3.isBN = function isBN(num) {
-        if (num instanceof BN3) {
-          return true;
-        }
-        return num !== null && typeof num === "object" && num.constructor.wordSize === BN3.wordSize && Array.isArray(num.words);
-      };
-      BN3.max = function max(left, right) {
-        if (left.cmp(right) > 0)
-          return left;
-        return right;
-      };
-      BN3.min = function min(left, right) {
-        if (left.cmp(right) < 0)
-          return left;
-        return right;
-      };
-      BN3.prototype._init = function init2(number, base2, endian) {
-        if (typeof number === "number") {
-          return this._initNumber(number, base2, endian);
-        }
-        if (typeof number === "object") {
-          return this._initArray(number, base2, endian);
-        }
-        if (base2 === "hex") {
-          base2 = 16;
-        }
-        assert2(base2 === (base2 | 0) && base2 >= 2 && base2 <= 36);
-        number = number.toString().replace(/\s+/g, "");
-        var start = 0;
-        if (number[0] === "-") {
-          start++;
-          this.negative = 1;
-        }
-        if (start < number.length) {
-          if (base2 === 16) {
-            this._parseHex(number, start, endian);
-          } else {
-            this._parseBase(number, base2, start);
-            if (endian === "le") {
-              this._initArray(this.toArray(), base2, endian);
-            }
-          }
-        }
-      };
-      BN3.prototype._initNumber = function _initNumber(number, base2, endian) {
-        if (number < 0) {
-          this.negative = 1;
-          number = -number;
-        }
-        if (number < 67108864) {
-          this.words = [number & 67108863];
-          this.length = 1;
-        } else if (number < 4503599627370496) {
-          this.words = [
-            number & 67108863,
-            number / 67108864 & 67108863
-          ];
-          this.length = 2;
-        } else {
-          assert2(number < 9007199254740992);
-          this.words = [
-            number & 67108863,
-            number / 67108864 & 67108863,
-            1
-          ];
-          this.length = 3;
-        }
-        if (endian !== "le")
-          return;
-        this._initArray(this.toArray(), base2, endian);
-      };
-      BN3.prototype._initArray = function _initArray(number, base2, endian) {
-        assert2(typeof number.length === "number");
-        if (number.length <= 0) {
-          this.words = [0];
-          this.length = 1;
-          return this;
-        }
-        this.length = Math.ceil(number.length / 3);
-        this.words = new Array(this.length);
-        for (var i2 = 0; i2 < this.length; i2++) {
-          this.words[i2] = 0;
-        }
-        var j2, w2;
-        var off = 0;
-        if (endian === "be") {
-          for (i2 = number.length - 1, j2 = 0; i2 >= 0; i2 -= 3) {
-            w2 = number[i2] | number[i2 - 1] << 8 | number[i2 - 2] << 16;
-            this.words[j2] |= w2 << off & 67108863;
-            this.words[j2 + 1] = w2 >>> 26 - off & 67108863;
-            off += 24;
-            if (off >= 26) {
-              off -= 26;
-              j2++;
-            }
-          }
-        } else if (endian === "le") {
-          for (i2 = 0, j2 = 0; i2 < number.length; i2 += 3) {
-            w2 = number[i2] | number[i2 + 1] << 8 | number[i2 + 2] << 16;
-            this.words[j2] |= w2 << off & 67108863;
-            this.words[j2 + 1] = w2 >>> 26 - off & 67108863;
-            off += 24;
-            if (off >= 26) {
-              off -= 26;
-              j2++;
-            }
-          }
-        }
-        return this._strip();
-      };
-      function parseHex4Bits(string, index) {
-        var c2 = string.charCodeAt(index);
-        if (c2 >= 48 && c2 <= 57) {
-          return c2 - 48;
-        } else if (c2 >= 65 && c2 <= 70) {
-          return c2 - 55;
-        } else if (c2 >= 97 && c2 <= 102) {
-          return c2 - 87;
-        } else {
-          assert2(false, "Invalid character in " + string);
-        }
-      }
-      function parseHexByte(string, lowerBound, index) {
-        var r3 = parseHex4Bits(string, index);
-        if (index - 1 >= lowerBound) {
-          r3 |= parseHex4Bits(string, index - 1) << 4;
-        }
-        return r3;
-      }
-      BN3.prototype._parseHex = function _parseHex(number, start, endian) {
-        this.length = Math.ceil((number.length - start) / 6);
-        this.words = new Array(this.length);
-        for (var i2 = 0; i2 < this.length; i2++) {
-          this.words[i2] = 0;
-        }
-        var off = 0;
-        var j2 = 0;
-        var w2;
-        if (endian === "be") {
-          for (i2 = number.length - 1; i2 >= start; i2 -= 2) {
-            w2 = parseHexByte(number, start, i2) << off;
-            this.words[j2] |= w2 & 67108863;
-            if (off >= 18) {
-              off -= 18;
-              j2 += 1;
-              this.words[j2] |= w2 >>> 26;
-            } else {
-              off += 8;
-            }
-          }
-        } else {
-          var parseLength = number.length - start;
-          for (i2 = parseLength % 2 === 0 ? start + 1 : start; i2 < number.length; i2 += 2) {
-            w2 = parseHexByte(number, start, i2) << off;
-            this.words[j2] |= w2 & 67108863;
-            if (off >= 18) {
-              off -= 18;
-              j2 += 1;
-              this.words[j2] |= w2 >>> 26;
-            } else {
-              off += 8;
-            }
-          }
-        }
-        this._strip();
-      };
-      function parseBase(str, start, end, mul3) {
-        var r3 = 0;
-        var b2 = 0;
-        var len = Math.min(str.length, end);
-        for (var i2 = start; i2 < len; i2++) {
-          var c2 = str.charCodeAt(i2) - 48;
-          r3 *= mul3;
-          if (c2 >= 49) {
-            b2 = c2 - 49 + 10;
-          } else if (c2 >= 17) {
-            b2 = c2 - 17 + 10;
-          } else {
-            b2 = c2;
-          }
-          assert2(c2 >= 0 && b2 < mul3, "Invalid character");
-          r3 += b2;
-        }
-        return r3;
-      }
-      BN3.prototype._parseBase = function _parseBase(number, base2, start) {
-        this.words = [0];
-        this.length = 1;
-        for (var limbLen = 0, limbPow = 1; limbPow <= 67108863; limbPow *= base2) {
-          limbLen++;
-        }
-        limbLen--;
-        limbPow = limbPow / base2 | 0;
-        var total = number.length - start;
-        var mod = total % limbLen;
-        var end = Math.min(total, total - mod) + start;
-        var word = 0;
-        for (var i2 = start; i2 < end; i2 += limbLen) {
-          word = parseBase(number, i2, i2 + limbLen, base2);
-          this.imuln(limbPow);
-          if (this.words[0] + word < 67108864) {
-            this.words[0] += word;
-          } else {
-            this._iaddn(word);
-          }
-        }
-        if (mod !== 0) {
-          var pow = 1;
-          word = parseBase(number, i2, number.length, base2);
-          for (i2 = 0; i2 < mod; i2++) {
-            pow *= base2;
-          }
-          this.imuln(pow);
-          if (this.words[0] + word < 67108864) {
-            this.words[0] += word;
-          } else {
-            this._iaddn(word);
-          }
-        }
-        this._strip();
-      };
-      BN3.prototype.copy = function copy(dest) {
-        dest.words = new Array(this.length);
-        for (var i2 = 0; i2 < this.length; i2++) {
-          dest.words[i2] = this.words[i2];
-        }
-        dest.length = this.length;
-        dest.negative = this.negative;
-        dest.red = this.red;
-      };
-      function move(dest, src) {
-        dest.words = src.words;
-        dest.length = src.length;
-        dest.negative = src.negative;
-        dest.red = src.red;
-      }
-      BN3.prototype._move = function _move(dest) {
-        move(dest, this);
-      };
-      BN3.prototype.clone = function clone() {
-        var r3 = new BN3(null);
-        this.copy(r3);
-        return r3;
-      };
-      BN3.prototype._expand = function _expand(size) {
-        while (this.length < size) {
-          this.words[this.length++] = 0;
-        }
-        return this;
-      };
-      BN3.prototype._strip = function strip() {
-        while (this.length > 1 && this.words[this.length - 1] === 0) {
-          this.length--;
-        }
-        return this._normSign();
-      };
-      BN3.prototype._normSign = function _normSign() {
-        if (this.length === 1 && this.words[0] === 0) {
-          this.negative = 0;
-        }
-        return this;
-      };
-      if (typeof Symbol !== "undefined" && typeof Symbol.for === "function") {
-        try {
-          BN3.prototype[Symbol.for("nodejs.util.inspect.custom")] = inspect4;
-        } catch (e2) {
-          BN3.prototype.inspect = inspect4;
-        }
-      } else {
-        BN3.prototype.inspect = inspect4;
-      }
-      function inspect4() {
-        return (this.red ? "<BN-R: " : "<BN: ") + this.toString(16) + ">";
-      }
-      var zeros2 = [
-        "",
-        "0",
-        "00",
-        "000",
-        "0000",
-        "00000",
-        "000000",
-        "0000000",
-        "00000000",
-        "000000000",
-        "0000000000",
-        "00000000000",
-        "000000000000",
-        "0000000000000",
-        "00000000000000",
-        "000000000000000",
-        "0000000000000000",
-        "00000000000000000",
-        "000000000000000000",
-        "0000000000000000000",
-        "00000000000000000000",
-        "000000000000000000000",
-        "0000000000000000000000",
-        "00000000000000000000000",
-        "000000000000000000000000",
-        "0000000000000000000000000"
-      ];
-      var groupSizes = [
-        0,
-        0,
-        25,
-        16,
-        12,
-        11,
-        10,
-        9,
-        8,
-        8,
-        7,
-        7,
-        7,
-        7,
-        6,
-        6,
-        6,
-        6,
-        6,
-        6,
-        6,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5
-      ];
-      var groupBases = [
-        0,
-        0,
-        33554432,
-        43046721,
-        16777216,
-        48828125,
-        60466176,
-        40353607,
-        16777216,
-        43046721,
-        1e7,
-        19487171,
-        35831808,
-        62748517,
-        7529536,
-        11390625,
-        16777216,
-        24137569,
-        34012224,
-        47045881,
-        64e6,
-        4084101,
-        5153632,
-        6436343,
-        7962624,
-        9765625,
-        11881376,
-        14348907,
-        17210368,
-        20511149,
-        243e5,
-        28629151,
-        33554432,
-        39135393,
-        45435424,
-        52521875,
-        60466176
-      ];
-      BN3.prototype.toString = function toString(base2, padding2) {
-        base2 = base2 || 10;
-        padding2 = padding2 | 0 || 1;
-        var out;
-        if (base2 === 16 || base2 === "hex") {
-          out = "";
-          var off = 0;
-          var carry = 0;
-          for (var i2 = 0; i2 < this.length; i2++) {
-            var w2 = this.words[i2];
-            var word = ((w2 << off | carry) & 16777215).toString(16);
-            carry = w2 >>> 24 - off & 16777215;
-            off += 2;
-            if (off >= 26) {
-              off -= 26;
-              i2--;
-            }
-            if (carry !== 0 || i2 !== this.length - 1) {
-              out = zeros2[6 - word.length] + word + out;
-            } else {
-              out = word + out;
-            }
-          }
-          if (carry !== 0) {
-            out = carry.toString(16) + out;
-          }
-          while (out.length % padding2 !== 0) {
-            out = "0" + out;
-          }
-          if (this.negative !== 0) {
-            out = "-" + out;
-          }
-          return out;
-        }
-        if (base2 === (base2 | 0) && base2 >= 2 && base2 <= 36) {
-          var groupSize = groupSizes[base2];
-          var groupBase = groupBases[base2];
-          out = "";
-          var c2 = this.clone();
-          c2.negative = 0;
-          while (!c2.isZero()) {
-            var r3 = c2.modrn(groupBase).toString(base2);
-            c2 = c2.idivn(groupBase);
-            if (!c2.isZero()) {
-              out = zeros2[groupSize - r3.length] + r3 + out;
-            } else {
-              out = r3 + out;
-            }
-          }
-          if (this.isZero()) {
-            out = "0" + out;
-          }
-          while (out.length % padding2 !== 0) {
-            out = "0" + out;
-          }
-          if (this.negative !== 0) {
-            out = "-" + out;
-          }
-          return out;
-        }
-        assert2(false, "Base should be between 2 and 36");
-      };
-      BN3.prototype.toNumber = function toNumber() {
-        var ret = this.words[0];
-        if (this.length === 2) {
-          ret += this.words[1] * 67108864;
-        } else if (this.length === 3 && this.words[2] === 1) {
-          ret += 4503599627370496 + this.words[1] * 67108864;
-        } else if (this.length > 2) {
-          assert2(false, "Number can only safely store up to 53 bits");
-        }
-        return this.negative !== 0 ? -ret : ret;
-      };
-      BN3.prototype.toJSON = function toJSON2() {
-        return this.toString(16, 2);
-      };
-      if (Buffer2) {
-        BN3.prototype.toBuffer = function toBuffer(endian, length) {
-          return this.toArrayLike(Buffer2, endian, length);
-        };
-      }
-      BN3.prototype.toArray = function toArray(endian, length) {
-        return this.toArrayLike(Array, endian, length);
-      };
-      var allocate = function allocate2(ArrayType, size) {
-        if (ArrayType.allocUnsafe) {
-          return ArrayType.allocUnsafe(size);
-        }
-        return new ArrayType(size);
-      };
-      BN3.prototype.toArrayLike = function toArrayLike(ArrayType, endian, length) {
-        this._strip();
-        var byteLength = this.byteLength();
-        var reqLength = length || Math.max(1, byteLength);
-        assert2(byteLength <= reqLength, "byte array longer than desired length");
-        assert2(reqLength > 0, "Requested array length <= 0");
-        var res = allocate(ArrayType, reqLength);
-        var postfix = endian === "le" ? "LE" : "BE";
-        this["_toArrayLike" + postfix](res, byteLength);
-        return res;
-      };
-      BN3.prototype._toArrayLikeLE = function _toArrayLikeLE(res, byteLength) {
-        var position = 0;
-        var carry = 0;
-        for (var i2 = 0, shift = 0; i2 < this.length; i2++) {
-          var word = this.words[i2] << shift | carry;
-          res[position++] = word & 255;
-          if (position < res.length) {
-            res[position++] = word >> 8 & 255;
-          }
-          if (position < res.length) {
-            res[position++] = word >> 16 & 255;
-          }
-          if (shift === 6) {
-            if (position < res.length) {
-              res[position++] = word >> 24 & 255;
-            }
-            carry = 0;
-            shift = 0;
-          } else {
-            carry = word >>> 24;
-            shift += 2;
-          }
-        }
-        if (position < res.length) {
-          res[position++] = carry;
-          while (position < res.length) {
-            res[position++] = 0;
-          }
-        }
-      };
-      BN3.prototype._toArrayLikeBE = function _toArrayLikeBE(res, byteLength) {
-        var position = res.length - 1;
-        var carry = 0;
-        for (var i2 = 0, shift = 0; i2 < this.length; i2++) {
-          var word = this.words[i2] << shift | carry;
-          res[position--] = word & 255;
-          if (position >= 0) {
-            res[position--] = word >> 8 & 255;
-          }
-          if (position >= 0) {
-            res[position--] = word >> 16 & 255;
-          }
-          if (shift === 6) {
-            if (position >= 0) {
-              res[position--] = word >> 24 & 255;
-            }
-            carry = 0;
-            shift = 0;
-          } else {
-            carry = word >>> 24;
-            shift += 2;
-          }
-        }
-        if (position >= 0) {
-          res[position--] = carry;
-          while (position >= 0) {
-            res[position--] = 0;
-          }
-        }
-      };
-      if (Math.clz32) {
-        BN3.prototype._countBits = function _countBits(w2) {
-          return 32 - Math.clz32(w2);
-        };
-      } else {
-        BN3.prototype._countBits = function _countBits(w2) {
-          var t2 = w2;
-          var r3 = 0;
-          if (t2 >= 4096) {
-            r3 += 13;
-            t2 >>>= 13;
-          }
-          if (t2 >= 64) {
-            r3 += 7;
-            t2 >>>= 7;
-          }
-          if (t2 >= 8) {
-            r3 += 4;
-            t2 >>>= 4;
-          }
-          if (t2 >= 2) {
-            r3 += 2;
-            t2 >>>= 2;
-          }
-          return r3 + t2;
-        };
-      }
-      BN3.prototype._zeroBits = function _zeroBits(w2) {
-        if (w2 === 0)
-          return 26;
-        var t2 = w2;
-        var r3 = 0;
-        if ((t2 & 8191) === 0) {
-          r3 += 13;
-          t2 >>>= 13;
-        }
-        if ((t2 & 127) === 0) {
-          r3 += 7;
-          t2 >>>= 7;
-        }
-        if ((t2 & 15) === 0) {
-          r3 += 4;
-          t2 >>>= 4;
-        }
-        if ((t2 & 3) === 0) {
-          r3 += 2;
-          t2 >>>= 2;
-        }
-        if ((t2 & 1) === 0) {
-          r3++;
-        }
-        return r3;
-      };
-      BN3.prototype.bitLength = function bitLength() {
-        var w2 = this.words[this.length - 1];
-        var hi = this._countBits(w2);
-        return (this.length - 1) * 26 + hi;
-      };
-      function toBitArray(num) {
-        var w2 = new Array(num.bitLength());
-        for (var bit = 0; bit < w2.length; bit++) {
-          var off = bit / 26 | 0;
-          var wbit = bit % 26;
-          w2[bit] = num.words[off] >>> wbit & 1;
-        }
-        return w2;
-      }
-      BN3.prototype.zeroBits = function zeroBits() {
-        if (this.isZero())
-          return 0;
-        var r3 = 0;
-        for (var i2 = 0; i2 < this.length; i2++) {
-          var b2 = this._zeroBits(this.words[i2]);
-          r3 += b2;
-          if (b2 !== 26)
-            break;
-        }
-        return r3;
-      };
-      BN3.prototype.byteLength = function byteLength() {
-        return Math.ceil(this.bitLength() / 8);
-      };
-      BN3.prototype.toTwos = function toTwos(width) {
-        if (this.negative !== 0) {
-          return this.abs().inotn(width).iaddn(1);
-        }
-        return this.clone();
-      };
-      BN3.prototype.fromTwos = function fromTwos(width) {
-        if (this.testn(width - 1)) {
-          return this.notn(width).iaddn(1).ineg();
-        }
-        return this.clone();
-      };
-      BN3.prototype.isNeg = function isNeg() {
-        return this.negative !== 0;
-      };
-      BN3.prototype.neg = function neg3() {
-        return this.clone().ineg();
-      };
-      BN3.prototype.ineg = function ineg() {
-        if (!this.isZero()) {
-          this.negative ^= 1;
-        }
-        return this;
-      };
-      BN3.prototype.iuor = function iuor(num) {
-        while (this.length < num.length) {
-          this.words[this.length++] = 0;
-        }
-        for (var i2 = 0; i2 < num.length; i2++) {
-          this.words[i2] = this.words[i2] | num.words[i2];
-        }
-        return this._strip();
-      };
-      BN3.prototype.ior = function ior(num) {
-        assert2((this.negative | num.negative) === 0);
-        return this.iuor(num);
-      };
-      BN3.prototype.or = function or(num) {
-        if (this.length > num.length)
-          return this.clone().ior(num);
-        return num.clone().ior(this);
-      };
-      BN3.prototype.uor = function uor(num) {
-        if (this.length > num.length)
-          return this.clone().iuor(num);
-        return num.clone().iuor(this);
-      };
-      BN3.prototype.iuand = function iuand(num) {
-        var b2;
-        if (this.length > num.length) {
-          b2 = num;
-        } else {
-          b2 = this;
-        }
-        for (var i2 = 0; i2 < b2.length; i2++) {
-          this.words[i2] = this.words[i2] & num.words[i2];
-        }
-        this.length = b2.length;
-        return this._strip();
-      };
-      BN3.prototype.iand = function iand(num) {
-        assert2((this.negative | num.negative) === 0);
-        return this.iuand(num);
-      };
-      BN3.prototype.and = function and(num) {
-        if (this.length > num.length)
-          return this.clone().iand(num);
-        return num.clone().iand(this);
-      };
-      BN3.prototype.uand = function uand(num) {
-        if (this.length > num.length)
-          return this.clone().iuand(num);
-        return num.clone().iuand(this);
-      };
-      BN3.prototype.iuxor = function iuxor(num) {
-        var a2;
-        var b2;
-        if (this.length > num.length) {
-          a2 = this;
-          b2 = num;
-        } else {
-          a2 = num;
-          b2 = this;
-        }
-        for (var i2 = 0; i2 < b2.length; i2++) {
-          this.words[i2] = a2.words[i2] ^ b2.words[i2];
-        }
-        if (this !== a2) {
-          for (; i2 < a2.length; i2++) {
-            this.words[i2] = a2.words[i2];
-          }
-        }
-        this.length = a2.length;
-        return this._strip();
-      };
-      BN3.prototype.ixor = function ixor(num) {
-        assert2((this.negative | num.negative) === 0);
-        return this.iuxor(num);
-      };
-      BN3.prototype.xor = function xor(num) {
-        if (this.length > num.length)
-          return this.clone().ixor(num);
-        return num.clone().ixor(this);
-      };
-      BN3.prototype.uxor = function uxor(num) {
-        if (this.length > num.length)
-          return this.clone().iuxor(num);
-        return num.clone().iuxor(this);
-      };
-      BN3.prototype.inotn = function inotn(width) {
-        assert2(typeof width === "number" && width >= 0);
-        var bytesNeeded = Math.ceil(width / 26) | 0;
-        var bitsLeft = width % 26;
-        this._expand(bytesNeeded);
-        if (bitsLeft > 0) {
-          bytesNeeded--;
-        }
-        for (var i2 = 0; i2 < bytesNeeded; i2++) {
-          this.words[i2] = ~this.words[i2] & 67108863;
-        }
-        if (bitsLeft > 0) {
-          this.words[i2] = ~this.words[i2] & 67108863 >> 26 - bitsLeft;
-        }
-        return this._strip();
-      };
-      BN3.prototype.notn = function notn(width) {
-        return this.clone().inotn(width);
-      };
-      BN3.prototype.setn = function setn(bit, val) {
-        assert2(typeof bit === "number" && bit >= 0);
-        var off = bit / 26 | 0;
-        var wbit = bit % 26;
-        this._expand(off + 1);
-        if (val) {
-          this.words[off] = this.words[off] | 1 << wbit;
-        } else {
-          this.words[off] = this.words[off] & ~(1 << wbit);
-        }
-        return this._strip();
-      };
-      BN3.prototype.iadd = function iadd(num) {
-        var r3;
-        if (this.negative !== 0 && num.negative === 0) {
-          this.negative = 0;
-          r3 = this.isub(num);
-          this.negative ^= 1;
-          return this._normSign();
-        } else if (this.negative === 0 && num.negative !== 0) {
-          num.negative = 0;
-          r3 = this.isub(num);
-          num.negative = 1;
-          return r3._normSign();
-        }
-        var a2, b2;
-        if (this.length > num.length) {
-          a2 = this;
-          b2 = num;
-        } else {
-          a2 = num;
-          b2 = this;
-        }
-        var carry = 0;
-        for (var i2 = 0; i2 < b2.length; i2++) {
-          r3 = (a2.words[i2] | 0) + (b2.words[i2] | 0) + carry;
-          this.words[i2] = r3 & 67108863;
-          carry = r3 >>> 26;
-        }
-        for (; carry !== 0 && i2 < a2.length; i2++) {
-          r3 = (a2.words[i2] | 0) + carry;
-          this.words[i2] = r3 & 67108863;
-          carry = r3 >>> 26;
-        }
-        this.length = a2.length;
-        if (carry !== 0) {
-          this.words[this.length] = carry;
-          this.length++;
-        } else if (a2 !== this) {
-          for (; i2 < a2.length; i2++) {
-            this.words[i2] = a2.words[i2];
-          }
-        }
-        return this;
-      };
-      BN3.prototype.add = function add3(num) {
-        var res;
-        if (num.negative !== 0 && this.negative === 0) {
-          num.negative = 0;
-          res = this.sub(num);
-          num.negative ^= 1;
-          return res;
-        } else if (num.negative === 0 && this.negative !== 0) {
-          this.negative = 0;
-          res = num.sub(this);
-          this.negative = 1;
-          return res;
-        }
-        if (this.length > num.length)
-          return this.clone().iadd(num);
-        return num.clone().iadd(this);
-      };
-      BN3.prototype.isub = function isub(num) {
-        if (num.negative !== 0) {
-          num.negative = 0;
-          var r3 = this.iadd(num);
-          num.negative = 1;
-          return r3._normSign();
-        } else if (this.negative !== 0) {
-          this.negative = 0;
-          this.iadd(num);
-          this.negative = 1;
-          return this._normSign();
-        }
-        var cmp = this.cmp(num);
-        if (cmp === 0) {
-          this.negative = 0;
-          this.length = 1;
-          this.words[0] = 0;
-          return this;
-        }
-        var a2, b2;
-        if (cmp > 0) {
-          a2 = this;
-          b2 = num;
-        } else {
-          a2 = num;
-          b2 = this;
-        }
-        var carry = 0;
-        for (var i2 = 0; i2 < b2.length; i2++) {
-          r3 = (a2.words[i2] | 0) - (b2.words[i2] | 0) + carry;
-          carry = r3 >> 26;
-          this.words[i2] = r3 & 67108863;
-        }
-        for (; carry !== 0 && i2 < a2.length; i2++) {
-          r3 = (a2.words[i2] | 0) + carry;
-          carry = r3 >> 26;
-          this.words[i2] = r3 & 67108863;
-        }
-        if (carry === 0 && i2 < a2.length && a2 !== this) {
-          for (; i2 < a2.length; i2++) {
-            this.words[i2] = a2.words[i2];
-          }
-        }
-        this.length = Math.max(this.length, i2);
-        if (a2 !== this) {
-          this.negative = 1;
-        }
-        return this._strip();
-      };
-      BN3.prototype.sub = function sub(num) {
-        return this.clone().isub(num);
-      };
-      function smallMulTo(self2, num, out) {
-        out.negative = num.negative ^ self2.negative;
-        var len = self2.length + num.length | 0;
-        out.length = len;
-        len = len - 1 | 0;
-        var a2 = self2.words[0] | 0;
-        var b2 = num.words[0] | 0;
-        var r3 = a2 * b2;
-        var lo = r3 & 67108863;
-        var carry = r3 / 67108864 | 0;
-        out.words[0] = lo;
-        for (var k2 = 1; k2 < len; k2++) {
-          var ncarry = carry >>> 26;
-          var rword = carry & 67108863;
-          var maxJ = Math.min(k2, num.length - 1);
-          for (var j2 = Math.max(0, k2 - self2.length + 1); j2 <= maxJ; j2++) {
-            var i2 = k2 - j2 | 0;
-            a2 = self2.words[i2] | 0;
-            b2 = num.words[j2] | 0;
-            r3 = a2 * b2 + rword;
-            ncarry += r3 / 67108864 | 0;
-            rword = r3 & 67108863;
-          }
-          out.words[k2] = rword | 0;
-          carry = ncarry | 0;
-        }
-        if (carry !== 0) {
-          out.words[k2] = carry | 0;
-        } else {
-          out.length--;
-        }
-        return out._strip();
-      }
-      var comb10MulTo = function comb10MulTo2(self2, num, out) {
-        var a2 = self2.words;
-        var b2 = num.words;
-        var o2 = out.words;
-        var c2 = 0;
-        var lo;
-        var mid;
-        var hi;
-        var a0 = a2[0] | 0;
-        var al0 = a0 & 8191;
-        var ah0 = a0 >>> 13;
-        var a1 = a2[1] | 0;
-        var al1 = a1 & 8191;
-        var ah1 = a1 >>> 13;
-        var a22 = a2[2] | 0;
-        var al2 = a22 & 8191;
-        var ah2 = a22 >>> 13;
-        var a3 = a2[3] | 0;
-        var al3 = a3 & 8191;
-        var ah3 = a3 >>> 13;
-        var a4 = a2[4] | 0;
-        var al4 = a4 & 8191;
-        var ah4 = a4 >>> 13;
-        var a5 = a2[5] | 0;
-        var al5 = a5 & 8191;
-        var ah5 = a5 >>> 13;
-        var a6 = a2[6] | 0;
-        var al6 = a6 & 8191;
-        var ah6 = a6 >>> 13;
-        var a7 = a2[7] | 0;
-        var al7 = a7 & 8191;
-        var ah7 = a7 >>> 13;
-        var a8 = a2[8] | 0;
-        var al8 = a8 & 8191;
-        var ah8 = a8 >>> 13;
-        var a9 = a2[9] | 0;
-        var al9 = a9 & 8191;
-        var ah9 = a9 >>> 13;
-        var b0 = b2[0] | 0;
-        var bl0 = b0 & 8191;
-        var bh0 = b0 >>> 13;
-        var b1 = b2[1] | 0;
-        var bl1 = b1 & 8191;
-        var bh1 = b1 >>> 13;
-        var b22 = b2[2] | 0;
-        var bl2 = b22 & 8191;
-        var bh2 = b22 >>> 13;
-        var b3 = b2[3] | 0;
-        var bl3 = b3 & 8191;
-        var bh3 = b3 >>> 13;
-        var b4 = b2[4] | 0;
-        var bl4 = b4 & 8191;
-        var bh4 = b4 >>> 13;
-        var b5 = b2[5] | 0;
-        var bl5 = b5 & 8191;
-        var bh5 = b5 >>> 13;
-        var b6 = b2[6] | 0;
-        var bl6 = b6 & 8191;
-        var bh6 = b6 >>> 13;
-        var b7 = b2[7] | 0;
-        var bl7 = b7 & 8191;
-        var bh7 = b7 >>> 13;
-        var b8 = b2[8] | 0;
-        var bl8 = b8 & 8191;
-        var bh8 = b8 >>> 13;
-        var b9 = b2[9] | 0;
-        var bl9 = b9 & 8191;
-        var bh9 = b9 >>> 13;
-        out.negative = self2.negative ^ num.negative;
-        out.length = 19;
-        lo = Math.imul(al0, bl0);
-        mid = Math.imul(al0, bh0);
-        mid = mid + Math.imul(ah0, bl0) | 0;
-        hi = Math.imul(ah0, bh0);
-        var w0 = (c2 + lo | 0) + ((mid & 8191) << 13) | 0;
-        c2 = (hi + (mid >>> 13) | 0) + (w0 >>> 26) | 0;
-        w0 &= 67108863;
-        lo = Math.imul(al1, bl0);
-        mid = Math.imul(al1, bh0);
-        mid = mid + Math.imul(ah1, bl0) | 0;
-        hi = Math.imul(ah1, bh0);
-        lo = lo + Math.imul(al0, bl1) | 0;
-        mid = mid + Math.imul(al0, bh1) | 0;
-        mid = mid + Math.imul(ah0, bl1) | 0;
-        hi = hi + Math.imul(ah0, bh1) | 0;
-        var w1 = (c2 + lo | 0) + ((mid & 8191) << 13) | 0;
-        c2 = (hi + (mid >>> 13) | 0) + (w1 >>> 26) | 0;
-        w1 &= 67108863;
-        lo = Math.imul(al2, bl0);
-        mid = Math.imul(al2, bh0);
-        mid = mid + Math.imul(ah2, bl0) | 0;
-        hi = Math.imul(ah2, bh0);
-        lo = lo + Math.imul(al1, bl1) | 0;
-        mid = mid + Math.imul(al1, bh1) | 0;
-        mid = mid + Math.imul(ah1, bl1) | 0;
-        hi = hi + Math.imul(ah1, bh1) | 0;
-        lo = lo + Math.imul(al0, bl2) | 0;
-        mid = mid + Math.imul(al0, bh2) | 0;
-        mid = mid + Math.imul(ah0, bl2) | 0;
-        hi = hi + Math.imul(ah0, bh2) | 0;
-        var w2 = (c2 + lo | 0) + ((mid & 8191) << 13) | 0;
-        c2 = (hi + (mid >>> 13) | 0) + (w2 >>> 26) | 0;
-        w2 &= 67108863;
-        lo = Math.imul(al3, bl0);
-        mid = Math.imul(al3, bh0);
-        mid = mid + Math.imul(ah3, bl0) | 0;
-        hi = Math.imul(ah3, bh0);
-        lo = lo + Math.imul(al2, bl1) | 0;
-        mid = mid + Math.imul(al2, bh1) | 0;
-        mid = mid + Math.imul(ah2, bl1) | 0;
-        hi = hi + Math.imul(ah2, bh1) | 0;
-        lo = lo + Math.imul(al1, bl2) | 0;
-        mid = mid + Math.imul(al1, bh2) | 0;
-        mid = mid + Math.imul(ah1, bl2) | 0;
-        hi = hi + Math.imul(ah1, bh2) | 0;
-        lo = lo + Math.imul(al0, bl3) | 0;
-        mid = mid + Math.imul(al0, bh3) | 0;
-        mid = mid + Math.imul(ah0, bl3) | 0;
-        hi = hi + Math.imul(ah0, bh3) | 0;
-        var w3 = (c2 + lo | 0) + ((mid & 8191) << 13) | 0;
-        c2 = (hi + (mid >>> 13) | 0) + (w3 >>> 26) | 0;
-        w3 &= 67108863;
-        lo = Math.imul(al4, bl0);
-        mid = Math.imul(al4, bh0);
-        mid = mid + Math.imul(ah4, bl0) | 0;
-        hi = Math.imul(ah4, bh0);
-        lo = lo + Math.imul(al3, bl1) | 0;
-        mid = mid + Math.imul(al3, bh1) | 0;
-        mid = mid + Math.imul(ah3, bl1) | 0;
-        hi = hi + Math.imul(ah3, bh1) | 0;
-        lo = lo + Math.imul(al2, bl2) | 0;
-        mid = mid + Math.imul(al2, bh2) | 0;
-        mid = mid + Math.imul(ah2, bl2) | 0;
-        hi = hi + Math.imul(ah2, bh2) | 0;
-        lo = lo + Math.imul(al1, bl3) | 0;
-        mid = mid + Math.imul(al1, bh3) | 0;
-        mid = mid + Math.imul(ah1, bl3) | 0;
-        hi = hi + Math.imul(ah1, bh3) | 0;
-        lo = lo + Math.imul(al0, bl4) | 0;
-        mid = mid + Math.imul(al0, bh4) | 0;
-        mid = mid + Math.imul(ah0, bl4) | 0;
-        hi = hi + Math.imul(ah0, bh4) | 0;
-        var w4 = (c2 + lo | 0) + ((mid & 8191) << 13) | 0;
-        c2 = (hi + (mid >>> 13) | 0) + (w4 >>> 26) | 0;
-        w4 &= 67108863;
-        lo = Math.imul(al5, bl0);
-        mid = Math.imul(al5, bh0);
-        mid = mid + Math.imul(ah5, bl0) | 0;
-        hi = Math.imul(ah5, bh0);
-        lo = lo + Math.imul(al4, bl1) | 0;
-        mid = mid + Math.imul(al4, bh1) | 0;
-        mid = mid + Math.imul(ah4, bl1) | 0;
-        hi = hi + Math.imul(ah4, bh1) | 0;
-        lo = lo + Math.imul(al3, bl2) | 0;
-        mid = mid + Math.imul(al3, bh2) | 0;
-        mid = mid + Math.imul(ah3, bl2) | 0;
-        hi = hi + Math.imul(ah3, bh2) | 0;
-        lo = lo + Math.imul(al2, bl3) | 0;
-        mid = mid + Math.imul(al2, bh3) | 0;
-        mid = mid + Math.imul(ah2, bl3) | 0;
-        hi = hi + Math.imul(ah2, bh3) | 0;
-        lo = lo + Math.imul(al1, bl4) | 0;
-        mid = mid + Math.imul(al1, bh4) | 0;
-        mid = mid + Math.imul(ah1, bl4) | 0;
-        hi = hi + Math.imul(ah1, bh4) | 0;
-        lo = lo + Math.imul(al0, bl5) | 0;
-        mid = mid + Math.imul(al0, bh5) | 0;
-        mid = mid + Math.imul(ah0, bl5) | 0;
-        hi = hi + Math.imul(ah0, bh5) | 0;
-        var w5 = (c2 + lo | 0) + ((mid & 8191) << 13) | 0;
-        c2 = (hi + (mid >>> 13) | 0) + (w5 >>> 26) | 0;
-        w5 &= 67108863;
-        lo = Math.imul(al6, bl0);
-        mid = Math.imul(al6, bh0);
-        mid = mid + Math.imul(ah6, bl0) | 0;
-        hi = Math.imul(ah6, bh0);
-        lo = lo + Math.imul(al5, bl1) | 0;
-        mid = mid + Math.imul(al5, bh1) | 0;
-        mid = mid + Math.imul(ah5, bl1) | 0;
-        hi = hi + Math.imul(ah5, bh1) | 0;
-        lo = lo + Math.imul(al4, bl2) | 0;
-        mid = mid + Math.imul(al4, bh2) | 0;
-        mid = mid + Math.imul(ah4, bl2) | 0;
-        hi = hi + Math.imul(ah4, bh2) | 0;
-        lo = lo + Math.imul(al3, bl3) | 0;
-        mid = mid + Math.imul(al3, bh3) | 0;
-        mid = mid + Math.imul(ah3, bl3) | 0;
-        hi = hi + Math.imul(ah3, bh3) | 0;
-        lo = lo + Math.imul(al2, bl4) | 0;
-        mid = mid + Math.imul(al2, bh4) | 0;
-        mid = mid + Math.imul(ah2, bl4) | 0;
-        hi = hi + Math.imul(ah2, bh4) | 0;
-        lo = lo + Math.imul(al1, bl5) | 0;
-        mid = mid + Math.imul(al1, bh5) | 0;
-        mid = mid + Math.imul(ah1, bl5) | 0;
-        hi = hi + Math.imul(ah1, bh5) | 0;
-        lo = lo + Math.imul(al0, bl6) | 0;
-        mid = mid + Math.imul(al0, bh6) | 0;
-        mid = mid + Math.imul(ah0, bl6) | 0;
-        hi = hi + Math.imul(ah0, bh6) | 0;
-        var w6 = (c2 + lo | 0) + ((mid & 8191) << 13) | 0;
-        c2 = (hi + (mid >>> 13) | 0) + (w6 >>> 26) | 0;
-        w6 &= 67108863;
-        lo = Math.imul(al7, bl0);
-        mid = Math.imul(al7, bh0);
-        mid = mid + Math.imul(ah7, bl0) | 0;
-        hi = Math.imul(ah7, bh0);
-        lo = lo + Math.imul(al6, bl1) | 0;
-        mid = mid + Math.imul(al6, bh1) | 0;
-        mid = mid + Math.imul(ah6, bl1) | 0;
-        hi = hi + Math.imul(ah6, bh1) | 0;
-        lo = lo + Math.imul(al5, bl2) | 0;
-        mid = mid + Math.imul(al5, bh2) | 0;
-        mid = mid + Math.imul(ah5, bl2) | 0;
-        hi = hi + Math.imul(ah5, bh2) | 0;
-        lo = lo + Math.imul(al4, bl3) | 0;
-        mid = mid + Math.imul(al4, bh3) | 0;
-        mid = mid + Math.imul(ah4, bl3) | 0;
-        hi = hi + Math.imul(ah4, bh3) | 0;
-        lo = lo + Math.imul(al3, bl4) | 0;
-        mid = mid + Math.imul(al3, bh4) | 0;
-        mid = mid + Math.imul(ah3, bl4) | 0;
-        hi = hi + Math.imul(ah3, bh4) | 0;
-        lo = lo + Math.imul(al2, bl5) | 0;
-        mid = mid + Math.imul(al2, bh5) | 0;
-        mid = mid + Math.imul(ah2, bl5) | 0;
-        hi = hi + Math.imul(ah2, bh5) | 0;
-        lo = lo + Math.imul(al1, bl6) | 0;
-        mid = mid + Math.imul(al1, bh6) | 0;
-        mid = mid + Math.imul(ah1, bl6) | 0;
-        hi = hi + Math.imul(ah1, bh6) | 0;
-        lo = lo + Math.imul(al0, bl7) | 0;
-        mid = mid + Math.imul(al0, bh7) | 0;
-        mid = mid + Math.imul(ah0, bl7) | 0;
-        hi = hi + Math.imul(ah0, bh7) | 0;
-        var w7 = (c2 + lo | 0) + ((mid & 8191) << 13) | 0;
-        c2 = (hi + (mid >>> 13) | 0) + (w7 >>> 26) | 0;
-        w7 &= 67108863;
-        lo = Math.imul(al8, bl0);
-        mid = Math.imul(al8, bh0);
-        mid = mid + Math.imul(ah8, bl0) | 0;
-        hi = Math.imul(ah8, bh0);
-        lo = lo + Math.imul(al7, bl1) | 0;
-        mid = mid + Math.imul(al7, bh1) | 0;
-        mid = mid + Math.imul(ah7, bl1) | 0;
-        hi = hi + Math.imul(ah7, bh1) | 0;
-        lo = lo + Math.imul(al6, bl2) | 0;
-        mid = mid + Math.imul(al6, bh2) | 0;
-        mid = mid + Math.imul(ah6, bl2) | 0;
-        hi = hi + Math.imul(ah6, bh2) | 0;
-        lo = lo + Math.imul(al5, bl3) | 0;
-        mid = mid + Math.imul(al5, bh3) | 0;
-        mid = mid + Math.imul(ah5, bl3) | 0;
-        hi = hi + Math.imul(ah5, bh3) | 0;
-        lo = lo + Math.imul(al4, bl4) | 0;
-        mid = mid + Math.imul(al4, bh4) | 0;
-        mid = mid + Math.imul(ah4, bl4) | 0;
-        hi = hi + Math.imul(ah4, bh4) | 0;
-        lo = lo + Math.imul(al3, bl5) | 0;
-        mid = mid + Math.imul(al3, bh5) | 0;
-        mid = mid + Math.imul(ah3, bl5) | 0;
-        hi = hi + Math.imul(ah3, bh5) | 0;
-        lo = lo + Math.imul(al2, bl6) | 0;
-        mid = mid + Math.imul(al2, bh6) | 0;
-        mid = mid + Math.imul(ah2, bl6) | 0;
-        hi = hi + Math.imul(ah2, bh6) | 0;
-        lo = lo + Math.imul(al1, bl7) | 0;
-        mid = mid + Math.imul(al1, bh7) | 0;
-        mid = mid + Math.imul(ah1, bl7) | 0;
-        hi = hi + Math.imul(ah1, bh7) | 0;
-        lo = lo + Math.imul(al0, bl8) | 0;
-        mid = mid + Math.imul(al0, bh8) | 0;
-        mid = mid + Math.imul(ah0, bl8) | 0;
-        hi = hi + Math.imul(ah0, bh8) | 0;
-        var w8 = (c2 + lo | 0) + ((mid & 8191) << 13) | 0;
-        c2 = (hi + (mid >>> 13) | 0) + (w8 >>> 26) | 0;
-        w8 &= 67108863;
-        lo = Math.imul(al9, bl0);
-        mid = Math.imul(al9, bh0);
-        mid = mid + Math.imul(ah9, bl0) | 0;
-        hi = Math.imul(ah9, bh0);
-        lo = lo + Math.imul(al8, bl1) | 0;
-        mid = mid + Math.imul(al8, bh1) | 0;
-        mid = mid + Math.imul(ah8, bl1) | 0;
-        hi = hi + Math.imul(ah8, bh1) | 0;
-        lo = lo + Math.imul(al7, bl2) | 0;
-        mid = mid + Math.imul(al7, bh2) | 0;
-        mid = mid + Math.imul(ah7, bl2) | 0;
-        hi = hi + Math.imul(ah7, bh2) | 0;
-        lo = lo + Math.imul(al6, bl3) | 0;
-        mid = mid + Math.imul(al6, bh3) | 0;
-        mid = mid + Math.imul(ah6, bl3) | 0;
-        hi = hi + Math.imul(ah6, bh3) | 0;
-        lo = lo + Math.imul(al5, bl4) | 0;
-        mid = mid + Math.imul(al5, bh4) | 0;
-        mid = mid + Math.imul(ah5, bl4) | 0;
-        hi = hi + Math.imul(ah5, bh4) | 0;
-        lo = lo + Math.imul(al4, bl5) | 0;
-        mid = mid + Math.imul(al4, bh5) | 0;
-        mid = mid + Math.imul(ah4, bl5) | 0;
-        hi = hi + Math.imul(ah4, bh5) | 0;
-        lo = lo + Math.imul(al3, bl6) | 0;
-        mid = mid + Math.imul(al3, bh6) | 0;
-        mid = mid + Math.imul(ah3, bl6) | 0;
-        hi = hi + Math.imul(ah3, bh6) | 0;
-        lo = lo + Math.imul(al2, bl7) | 0;
-        mid = mid + Math.imul(al2, bh7) | 0;
-        mid = mid + Math.imul(ah2, bl7) | 0;
-        hi = hi + Math.imul(ah2, bh7) | 0;
-        lo = lo + Math.imul(al1, bl8) | 0;
-        mid = mid + Math.imul(al1, bh8) | 0;
-        mid = mid + Math.imul(ah1, bl8) | 0;
-        hi = hi + Math.imul(ah1, bh8) | 0;
-        lo = lo + Math.imul(al0, bl9) | 0;
-        mid = mid + Math.imul(al0, bh9) | 0;
-        mid = mid + Math.imul(ah0, bl9) | 0;
-        hi = hi + Math.imul(ah0, bh9) | 0;
-        var w9 = (c2 + lo | 0) + ((mid & 8191) << 13) | 0;
-        c2 = (hi + (mid >>> 13) | 0) + (w9 >>> 26) | 0;
-        w9 &= 67108863;
-        lo = Math.imul(al9, bl1);
-        mid = Math.imul(al9, bh1);
-        mid = mid + Math.imul(ah9, bl1) | 0;
-        hi = Math.imul(ah9, bh1);
-        lo = lo + Math.imul(al8, bl2) | 0;
-        mid = mid + Math.imul(al8, bh2) | 0;
-        mid = mid + Math.imul(ah8, bl2) | 0;
-        hi = hi + Math.imul(ah8, bh2) | 0;
-        lo = lo + Math.imul(al7, bl3) | 0;
-        mid = mid + Math.imul(al7, bh3) | 0;
-        mid = mid + Math.imul(ah7, bl3) | 0;
-        hi = hi + Math.imul(ah7, bh3) | 0;
-        lo = lo + Math.imul(al6, bl4) | 0;
-        mid = mid + Math.imul(al6, bh4) | 0;
-        mid = mid + Math.imul(ah6, bl4) | 0;
-        hi = hi + Math.imul(ah6, bh4) | 0;
-        lo = lo + Math.imul(al5, bl5) | 0;
-        mid = mid + Math.imul(al5, bh5) | 0;
-        mid = mid + Math.imul(ah5, bl5) | 0;
-        hi = hi + Math.imul(ah5, bh5) | 0;
-        lo = lo + Math.imul(al4, bl6) | 0;
-        mid = mid + Math.imul(al4, bh6) | 0;
-        mid = mid + Math.imul(ah4, bl6) | 0;
-        hi = hi + Math.imul(ah4, bh6) | 0;
-        lo = lo + Math.imul(al3, bl7) | 0;
-        mid = mid + Math.imul(al3, bh7) | 0;
-        mid = mid + Math.imul(ah3, bl7) | 0;
-        hi = hi + Math.imul(ah3, bh7) | 0;
-        lo = lo + Math.imul(al2, bl8) | 0;
-        mid = mid + Math.imul(al2, bh8) | 0;
-        mid = mid + Math.imul(ah2, bl8) | 0;
-        hi = hi + Math.imul(ah2, bh8) | 0;
-        lo = lo + Math.imul(al1, bl9) | 0;
-        mid = mid + Math.imul(al1, bh9) | 0;
-        mid = mid + Math.imul(ah1, bl9) | 0;
-        hi = hi + Math.imul(ah1, bh9) | 0;
-        var w10 = (c2 + lo | 0) + ((mid & 8191) << 13) | 0;
-        c2 = (hi + (mid >>> 13) | 0) + (w10 >>> 26) | 0;
-        w10 &= 67108863;
-        lo = Math.imul(al9, bl2);
-        mid = Math.imul(al9, bh2);
-        mid = mid + Math.imul(ah9, bl2) | 0;
-        hi = Math.imul(ah9, bh2);
-        lo = lo + Math.imul(al8, bl3) | 0;
-        mid = mid + Math.imul(al8, bh3) | 0;
-        mid = mid + Math.imul(ah8, bl3) | 0;
-        hi = hi + Math.imul(ah8, bh3) | 0;
-        lo = lo + Math.imul(al7, bl4) | 0;
-        mid = mid + Math.imul(al7, bh4) | 0;
-        mid = mid + Math.imul(ah7, bl4) | 0;
-        hi = hi + Math.imul(ah7, bh4) | 0;
-        lo = lo + Math.imul(al6, bl5) | 0;
-        mid = mid + Math.imul(al6, bh5) | 0;
-        mid = mid + Math.imul(ah6, bl5) | 0;
-        hi = hi + Math.imul(ah6, bh5) | 0;
-        lo = lo + Math.imul(al5, bl6) | 0;
-        mid = mid + Math.imul(al5, bh6) | 0;
-        mid = mid + Math.imul(ah5, bl6) | 0;
-        hi = hi + Math.imul(ah5, bh6) | 0;
-        lo = lo + Math.imul(al4, bl7) | 0;
-        mid = mid + Math.imul(al4, bh7) | 0;
-        mid = mid + Math.imul(ah4, bl7) | 0;
-        hi = hi + Math.imul(ah4, bh7) | 0;
-        lo = lo + Math.imul(al3, bl8) | 0;
-        mid = mid + Math.imul(al3, bh8) | 0;
-        mid = mid + Math.imul(ah3, bl8) | 0;
-        hi = hi + Math.imul(ah3, bh8) | 0;
-        lo = lo + Math.imul(al2, bl9) | 0;
-        mid = mid + Math.imul(al2, bh9) | 0;
-        mid = mid + Math.imul(ah2, bl9) | 0;
-        hi = hi + Math.imul(ah2, bh9) | 0;
-        var w11 = (c2 + lo | 0) + ((mid & 8191) << 13) | 0;
-        c2 = (hi + (mid >>> 13) | 0) + (w11 >>> 26) | 0;
-        w11 &= 67108863;
-        lo = Math.imul(al9, bl3);
-        mid = Math.imul(al9, bh3);
-        mid = mid + Math.imul(ah9, bl3) | 0;
-        hi = Math.imul(ah9, bh3);
-        lo = lo + Math.imul(al8, bl4) | 0;
-        mid = mid + Math.imul(al8, bh4) | 0;
-        mid = mid + Math.imul(ah8, bl4) | 0;
-        hi = hi + Math.imul(ah8, bh4) | 0;
-        lo = lo + Math.imul(al7, bl5) | 0;
-        mid = mid + Math.imul(al7, bh5) | 0;
-        mid = mid + Math.imul(ah7, bl5) | 0;
-        hi = hi + Math.imul(ah7, bh5) | 0;
-        lo = lo + Math.imul(al6, bl6) | 0;
-        mid = mid + Math.imul(al6, bh6) | 0;
-        mid = mid + Math.imul(ah6, bl6) | 0;
-        hi = hi + Math.imul(ah6, bh6) | 0;
-        lo = lo + Math.imul(al5, bl7) | 0;
-        mid = mid + Math.imul(al5, bh7) | 0;
-        mid = mid + Math.imul(ah5, bl7) | 0;
-        hi = hi + Math.imul(ah5, bh7) | 0;
-        lo = lo + Math.imul(al4, bl8) | 0;
-        mid = mid + Math.imul(al4, bh8) | 0;
-        mid = mid + Math.imul(ah4, bl8) | 0;
-        hi = hi + Math.imul(ah4, bh8) | 0;
-        lo = lo + Math.imul(al3, bl9) | 0;
-        mid = mid + Math.imul(al3, bh9) | 0;
-        mid = mid + Math.imul(ah3, bl9) | 0;
-        hi = hi + Math.imul(ah3, bh9) | 0;
-        var w12 = (c2 + lo | 0) + ((mid & 8191) << 13) | 0;
-        c2 = (hi + (mid >>> 13) | 0) + (w12 >>> 26) | 0;
-        w12 &= 67108863;
-        lo = Math.imul(al9, bl4);
-        mid = Math.imul(al9, bh4);
-        mid = mid + Math.imul(ah9, bl4) | 0;
-        hi = Math.imul(ah9, bh4);
-        lo = lo + Math.imul(al8, bl5) | 0;
-        mid = mid + Math.imul(al8, bh5) | 0;
-        mid = mid + Math.imul(ah8, bl5) | 0;
-        hi = hi + Math.imul(ah8, bh5) | 0;
-        lo = lo + Math.imul(al7, bl6) | 0;
-        mid = mid + Math.imul(al7, bh6) | 0;
-        mid = mid + Math.imul(ah7, bl6) | 0;
-        hi = hi + Math.imul(ah7, bh6) | 0;
-        lo = lo + Math.imul(al6, bl7) | 0;
-        mid = mid + Math.imul(al6, bh7) | 0;
-        mid = mid + Math.imul(ah6, bl7) | 0;
-        hi = hi + Math.imul(ah6, bh7) | 0;
-        lo = lo + Math.imul(al5, bl8) | 0;
-        mid = mid + Math.imul(al5, bh8) | 0;
-        mid = mid + Math.imul(ah5, bl8) | 0;
-        hi = hi + Math.imul(ah5, bh8) | 0;
-        lo = lo + Math.imul(al4, bl9) | 0;
-        mid = mid + Math.imul(al4, bh9) | 0;
-        mid = mid + Math.imul(ah4, bl9) | 0;
-        hi = hi + Math.imul(ah4, bh9) | 0;
-        var w13 = (c2 + lo | 0) + ((mid & 8191) << 13) | 0;
-        c2 = (hi + (mid >>> 13) | 0) + (w13 >>> 26) | 0;
-        w13 &= 67108863;
-        lo = Math.imul(al9, bl5);
-        mid = Math.imul(al9, bh5);
-        mid = mid + Math.imul(ah9, bl5) | 0;
-        hi = Math.imul(ah9, bh5);
-        lo = lo + Math.imul(al8, bl6) | 0;
-        mid = mid + Math.imul(al8, bh6) | 0;
-        mid = mid + Math.imul(ah8, bl6) | 0;
-        hi = hi + Math.imul(ah8, bh6) | 0;
-        lo = lo + Math.imul(al7, bl7) | 0;
-        mid = mid + Math.imul(al7, bh7) | 0;
-        mid = mid + Math.imul(ah7, bl7) | 0;
-        hi = hi + Math.imul(ah7, bh7) | 0;
-        lo = lo + Math.imul(al6, bl8) | 0;
-        mid = mid + Math.imul(al6, bh8) | 0;
-        mid = mid + Math.imul(ah6, bl8) | 0;
-        hi = hi + Math.imul(ah6, bh8) | 0;
-        lo = lo + Math.imul(al5, bl9) | 0;
-        mid = mid + Math.imul(al5, bh9) | 0;
-        mid = mid + Math.imul(ah5, bl9) | 0;
-        hi = hi + Math.imul(ah5, bh9) | 0;
-        var w14 = (c2 + lo | 0) + ((mid & 8191) << 13) | 0;
-        c2 = (hi + (mid >>> 13) | 0) + (w14 >>> 26) | 0;
-        w14 &= 67108863;
-        lo = Math.imul(al9, bl6);
-        mid = Math.imul(al9, bh6);
-        mid = mid + Math.imul(ah9, bl6) | 0;
-        hi = Math.imul(ah9, bh6);
-        lo = lo + Math.imul(al8, bl7) | 0;
-        mid = mid + Math.imul(al8, bh7) | 0;
-        mid = mid + Math.imul(ah8, bl7) | 0;
-        hi = hi + Math.imul(ah8, bh7) | 0;
-        lo = lo + Math.imul(al7, bl8) | 0;
-        mid = mid + Math.imul(al7, bh8) | 0;
-        mid = mid + Math.imul(ah7, bl8) | 0;
-        hi = hi + Math.imul(ah7, bh8) | 0;
-        lo = lo + Math.imul(al6, bl9) | 0;
-        mid = mid + Math.imul(al6, bh9) | 0;
-        mid = mid + Math.imul(ah6, bl9) | 0;
-        hi = hi + Math.imul(ah6, bh9) | 0;
-        var w15 = (c2 + lo | 0) + ((mid & 8191) << 13) | 0;
-        c2 = (hi + (mid >>> 13) | 0) + (w15 >>> 26) | 0;
-        w15 &= 67108863;
-        lo = Math.imul(al9, bl7);
-        mid = Math.imul(al9, bh7);
-        mid = mid + Math.imul(ah9, bl7) | 0;
-        hi = Math.imul(ah9, bh7);
-        lo = lo + Math.imul(al8, bl8) | 0;
-        mid = mid + Math.imul(al8, bh8) | 0;
-        mid = mid + Math.imul(ah8, bl8) | 0;
-        hi = hi + Math.imul(ah8, bh8) | 0;
-        lo = lo + Math.imul(al7, bl9) | 0;
-        mid = mid + Math.imul(al7, bh9) | 0;
-        mid = mid + Math.imul(ah7, bl9) | 0;
-        hi = hi + Math.imul(ah7, bh9) | 0;
-        var w16 = (c2 + lo | 0) + ((mid & 8191) << 13) | 0;
-        c2 = (hi + (mid >>> 13) | 0) + (w16 >>> 26) | 0;
-        w16 &= 67108863;
-        lo = Math.imul(al9, bl8);
-        mid = Math.imul(al9, bh8);
-        mid = mid + Math.imul(ah9, bl8) | 0;
-        hi = Math.imul(ah9, bh8);
-        lo = lo + Math.imul(al8, bl9) | 0;
-        mid = mid + Math.imul(al8, bh9) | 0;
-        mid = mid + Math.imul(ah8, bl9) | 0;
-        hi = hi + Math.imul(ah8, bh9) | 0;
-        var w17 = (c2 + lo | 0) + ((mid & 8191) << 13) | 0;
-        c2 = (hi + (mid >>> 13) | 0) + (w17 >>> 26) | 0;
-        w17 &= 67108863;
-        lo = Math.imul(al9, bl9);
-        mid = Math.imul(al9, bh9);
-        mid = mid + Math.imul(ah9, bl9) | 0;
-        hi = Math.imul(ah9, bh9);
-        var w18 = (c2 + lo | 0) + ((mid & 8191) << 13) | 0;
-        c2 = (hi + (mid >>> 13) | 0) + (w18 >>> 26) | 0;
-        w18 &= 67108863;
-        o2[0] = w0;
-        o2[1] = w1;
-        o2[2] = w2;
-        o2[3] = w3;
-        o2[4] = w4;
-        o2[5] = w5;
-        o2[6] = w6;
-        o2[7] = w7;
-        o2[8] = w8;
-        o2[9] = w9;
-        o2[10] = w10;
-        o2[11] = w11;
-        o2[12] = w12;
-        o2[13] = w13;
-        o2[14] = w14;
-        o2[15] = w15;
-        o2[16] = w16;
-        o2[17] = w17;
-        o2[18] = w18;
-        if (c2 !== 0) {
-          o2[19] = c2;
-          out.length++;
-        }
-        return out;
-      };
-      if (!Math.imul) {
-        comb10MulTo = smallMulTo;
-      }
-      function bigMulTo(self2, num, out) {
-        out.negative = num.negative ^ self2.negative;
-        out.length = self2.length + num.length;
-        var carry = 0;
-        var hncarry = 0;
-        for (var k2 = 0; k2 < out.length - 1; k2++) {
-          var ncarry = hncarry;
-          hncarry = 0;
-          var rword = carry & 67108863;
-          var maxJ = Math.min(k2, num.length - 1);
-          for (var j2 = Math.max(0, k2 - self2.length + 1); j2 <= maxJ; j2++) {
-            var i2 = k2 - j2;
-            var a2 = self2.words[i2] | 0;
-            var b2 = num.words[j2] | 0;
-            var r3 = a2 * b2;
-            var lo = r3 & 67108863;
-            ncarry = ncarry + (r3 / 67108864 | 0) | 0;
-            lo = lo + rword | 0;
-            rword = lo & 67108863;
-            ncarry = ncarry + (lo >>> 26) | 0;
-            hncarry += ncarry >>> 26;
-            ncarry &= 67108863;
-          }
-          out.words[k2] = rword;
-          carry = ncarry;
-          ncarry = hncarry;
-        }
-        if (carry !== 0) {
-          out.words[k2] = carry;
-        } else {
-          out.length--;
-        }
-        return out._strip();
-      }
-      function jumboMulTo(self2, num, out) {
-        return bigMulTo(self2, num, out);
-      }
-      BN3.prototype.mulTo = function mulTo(num, out) {
-        var res;
-        var len = this.length + num.length;
-        if (this.length === 10 && num.length === 10) {
-          res = comb10MulTo(this, num, out);
-        } else if (len < 63) {
-          res = smallMulTo(this, num, out);
-        } else if (len < 1024) {
-          res = bigMulTo(this, num, out);
-        } else {
-          res = jumboMulTo(this, num, out);
-        }
-        return res;
-      };
-      function FFTM(x2, y2) {
-        this.x = x2;
-        this.y = y2;
-      }
-      FFTM.prototype.makeRBT = function makeRBT(N3) {
-        var t2 = new Array(N3);
-        var l2 = BN3.prototype._countBits(N3) - 1;
-        for (var i2 = 0; i2 < N3; i2++) {
-          t2[i2] = this.revBin(i2, l2, N3);
-        }
-        return t2;
-      };
-      FFTM.prototype.revBin = function revBin(x2, l2, N3) {
-        if (x2 === 0 || x2 === N3 - 1)
-          return x2;
-        var rb = 0;
-        for (var i2 = 0; i2 < l2; i2++) {
-          rb |= (x2 & 1) << l2 - i2 - 1;
-          x2 >>= 1;
-        }
-        return rb;
-      };
-      FFTM.prototype.permute = function permute(rbt, rws, iws, rtws, itws, N3) {
-        for (var i2 = 0; i2 < N3; i2++) {
-          rtws[i2] = rws[rbt[i2]];
-          itws[i2] = iws[rbt[i2]];
-        }
-      };
-      FFTM.prototype.transform = function transform(rws, iws, rtws, itws, N3, rbt) {
-        this.permute(rbt, rws, iws, rtws, itws, N3);
-        for (var s2 = 1; s2 < N3; s2 <<= 1) {
-          var l2 = s2 << 1;
-          var rtwdf = Math.cos(2 * Math.PI / l2);
-          var itwdf = Math.sin(2 * Math.PI / l2);
-          for (var p = 0; p < N3; p += l2) {
-            var rtwdf_ = rtwdf;
-            var itwdf_ = itwdf;
-            for (var j2 = 0; j2 < s2; j2++) {
-              var re2 = rtws[p + j2];
-              var ie2 = itws[p + j2];
-              var ro = rtws[p + j2 + s2];
-              var io = itws[p + j2 + s2];
-              var rx = rtwdf_ * ro - itwdf_ * io;
-              io = rtwdf_ * io + itwdf_ * ro;
-              ro = rx;
-              rtws[p + j2] = re2 + ro;
-              itws[p + j2] = ie2 + io;
-              rtws[p + j2 + s2] = re2 - ro;
-              itws[p + j2 + s2] = ie2 - io;
-              if (j2 !== l2) {
-                rx = rtwdf * rtwdf_ - itwdf * itwdf_;
-                itwdf_ = rtwdf * itwdf_ + itwdf * rtwdf_;
-                rtwdf_ = rx;
-              }
-            }
-          }
-        }
-      };
-      FFTM.prototype.guessLen13b = function guessLen13b(n2, m2) {
-        var N3 = Math.max(m2, n2) | 1;
-        var odd = N3 & 1;
-        var i2 = 0;
-        for (N3 = N3 / 2 | 0; N3; N3 = N3 >>> 1) {
-          i2++;
-        }
-        return 1 << i2 + 1 + odd;
-      };
-      FFTM.prototype.conjugate = function conjugate(rws, iws, N3) {
-        if (N3 <= 1)
-          return;
-        for (var i2 = 0; i2 < N3 / 2; i2++) {
-          var t2 = rws[i2];
-          rws[i2] = rws[N3 - i2 - 1];
-          rws[N3 - i2 - 1] = t2;
-          t2 = iws[i2];
-          iws[i2] = -iws[N3 - i2 - 1];
-          iws[N3 - i2 - 1] = -t2;
-        }
-      };
-      FFTM.prototype.normalize13b = function normalize13b(ws, N3) {
-        var carry = 0;
-        for (var i2 = 0; i2 < N3 / 2; i2++) {
-          var w2 = Math.round(ws[2 * i2 + 1] / N3) * 8192 + Math.round(ws[2 * i2] / N3) + carry;
-          ws[i2] = w2 & 67108863;
-          if (w2 < 67108864) {
-            carry = 0;
-          } else {
-            carry = w2 / 67108864 | 0;
-          }
-        }
-        return ws;
-      };
-      FFTM.prototype.convert13b = function convert13b(ws, len, rws, N3) {
-        var carry = 0;
-        for (var i2 = 0; i2 < len; i2++) {
-          carry = carry + (ws[i2] | 0);
-          rws[2 * i2] = carry & 8191;
-          carry = carry >>> 13;
-          rws[2 * i2 + 1] = carry & 8191;
-          carry = carry >>> 13;
-        }
-        for (i2 = 2 * len; i2 < N3; ++i2) {
-          rws[i2] = 0;
-        }
-        assert2(carry === 0);
-        assert2((carry & ~8191) === 0);
-      };
-      FFTM.prototype.stub = function stub(N3) {
-        var ph = new Array(N3);
-        for (var i2 = 0; i2 < N3; i2++) {
-          ph[i2] = 0;
-        }
-        return ph;
-      };
-      FFTM.prototype.mulp = function mulp(x2, y2, out) {
-        var N3 = 2 * this.guessLen13b(x2.length, y2.length);
-        var rbt = this.makeRBT(N3);
-        var _5 = this.stub(N3);
-        var rws = new Array(N3);
-        var rwst = new Array(N3);
-        var iwst = new Array(N3);
-        var nrws = new Array(N3);
-        var nrwst = new Array(N3);
-        var niwst = new Array(N3);
-        var rmws = out.words;
-        rmws.length = N3;
-        this.convert13b(x2.words, x2.length, rws, N3);
-        this.convert13b(y2.words, y2.length, nrws, N3);
-        this.transform(rws, _5, rwst, iwst, N3, rbt);
-        this.transform(nrws, _5, nrwst, niwst, N3, rbt);
-        for (var i2 = 0; i2 < N3; i2++) {
-          var rx = rwst[i2] * nrwst[i2] - iwst[i2] * niwst[i2];
-          iwst[i2] = rwst[i2] * niwst[i2] + iwst[i2] * nrwst[i2];
-          rwst[i2] = rx;
-        }
-        this.conjugate(rwst, iwst, N3);
-        this.transform(rwst, iwst, rmws, _5, N3, rbt);
-        this.conjugate(rmws, _5, N3);
-        this.normalize13b(rmws, N3);
-        out.negative = x2.negative ^ y2.negative;
-        out.length = x2.length + y2.length;
-        return out._strip();
-      };
-      BN3.prototype.mul = function mul3(num) {
-        var out = new BN3(null);
-        out.words = new Array(this.length + num.length);
-        return this.mulTo(num, out);
-      };
-      BN3.prototype.mulf = function mulf(num) {
-        var out = new BN3(null);
-        out.words = new Array(this.length + num.length);
-        return jumboMulTo(this, num, out);
-      };
-      BN3.prototype.imul = function imul(num) {
-        return this.clone().mulTo(num, this);
-      };
-      BN3.prototype.imuln = function imuln(num) {
-        var isNegNum = num < 0;
-        if (isNegNum)
-          num = -num;
-        assert2(typeof num === "number");
-        assert2(num < 67108864);
-        var carry = 0;
-        for (var i2 = 0; i2 < this.length; i2++) {
-          var w2 = (this.words[i2] | 0) * num;
-          var lo = (w2 & 67108863) + (carry & 67108863);
-          carry >>= 26;
-          carry += w2 / 67108864 | 0;
-          carry += lo >>> 26;
-          this.words[i2] = lo & 67108863;
-        }
-        if (carry !== 0) {
-          this.words[i2] = carry;
-          this.length++;
-        }
-        return isNegNum ? this.ineg() : this;
-      };
-      BN3.prototype.muln = function muln(num) {
-        return this.clone().imuln(num);
-      };
-      BN3.prototype.sqr = function sqr() {
-        return this.mul(this);
-      };
-      BN3.prototype.isqr = function isqr() {
-        return this.imul(this.clone());
-      };
-      BN3.prototype.pow = function pow(num) {
-        var w2 = toBitArray(num);
-        if (w2.length === 0)
-          return new BN3(1);
-        var res = this;
-        for (var i2 = 0; i2 < w2.length; i2++, res = res.sqr()) {
-          if (w2[i2] !== 0)
-            break;
-        }
-        if (++i2 < w2.length) {
-          for (var q2 = res.sqr(); i2 < w2.length; i2++, q2 = q2.sqr()) {
-            if (w2[i2] === 0)
-              continue;
-            res = res.mul(q2);
-          }
-        }
-        return res;
-      };
-      BN3.prototype.iushln = function iushln(bits) {
-        assert2(typeof bits === "number" && bits >= 0);
-        var r3 = bits % 26;
-        var s2 = (bits - r3) / 26;
-        var carryMask = 67108863 >>> 26 - r3 << 26 - r3;
-        var i2;
-        if (r3 !== 0) {
-          var carry = 0;
-          for (i2 = 0; i2 < this.length; i2++) {
-            var newCarry = this.words[i2] & carryMask;
-            var c2 = (this.words[i2] | 0) - newCarry << r3;
-            this.words[i2] = c2 | carry;
-            carry = newCarry >>> 26 - r3;
-          }
-          if (carry) {
-            this.words[i2] = carry;
-            this.length++;
-          }
-        }
-        if (s2 !== 0) {
-          for (i2 = this.length - 1; i2 >= 0; i2--) {
-            this.words[i2 + s2] = this.words[i2];
-          }
-          for (i2 = 0; i2 < s2; i2++) {
-            this.words[i2] = 0;
-          }
-          this.length += s2;
-        }
-        return this._strip();
-      };
-      BN3.prototype.ishln = function ishln(bits) {
-        assert2(this.negative === 0);
-        return this.iushln(bits);
-      };
-      BN3.prototype.iushrn = function iushrn(bits, hint, extended) {
-        assert2(typeof bits === "number" && bits >= 0);
-        var h;
-        if (hint) {
-          h = (hint - hint % 26) / 26;
-        } else {
-          h = 0;
-        }
-        var r3 = bits % 26;
-        var s2 = Math.min((bits - r3) / 26, this.length);
-        var mask = 67108863 ^ 67108863 >>> r3 << r3;
-        var maskedWords = extended;
-        h -= s2;
-        h = Math.max(0, h);
-        if (maskedWords) {
-          for (var i2 = 0; i2 < s2; i2++) {
-            maskedWords.words[i2] = this.words[i2];
-          }
-          maskedWords.length = s2;
-        }
-        if (s2 === 0) {
-        } else if (this.length > s2) {
-          this.length -= s2;
-          for (i2 = 0; i2 < this.length; i2++) {
-            this.words[i2] = this.words[i2 + s2];
-          }
-        } else {
-          this.words[0] = 0;
-          this.length = 1;
-        }
-        var carry = 0;
-        for (i2 = this.length - 1; i2 >= 0 && (carry !== 0 || i2 >= h); i2--) {
-          var word = this.words[i2] | 0;
-          this.words[i2] = carry << 26 - r3 | word >>> r3;
-          carry = word & mask;
-        }
-        if (maskedWords && carry !== 0) {
-          maskedWords.words[maskedWords.length++] = carry;
-        }
-        if (this.length === 0) {
-          this.words[0] = 0;
-          this.length = 1;
-        }
-        return this._strip();
-      };
-      BN3.prototype.ishrn = function ishrn(bits, hint, extended) {
-        assert2(this.negative === 0);
-        return this.iushrn(bits, hint, extended);
-      };
-      BN3.prototype.shln = function shln(bits) {
-        return this.clone().ishln(bits);
-      };
-      BN3.prototype.ushln = function ushln(bits) {
-        return this.clone().iushln(bits);
-      };
-      BN3.prototype.shrn = function shrn(bits) {
-        return this.clone().ishrn(bits);
-      };
-      BN3.prototype.ushrn = function ushrn(bits) {
-        return this.clone().iushrn(bits);
-      };
-      BN3.prototype.testn = function testn(bit) {
-        assert2(typeof bit === "number" && bit >= 0);
-        var r3 = bit % 26;
-        var s2 = (bit - r3) / 26;
-        var q2 = 1 << r3;
-        if (this.length <= s2)
-          return false;
-        var w2 = this.words[s2];
-        return !!(w2 & q2);
-      };
-      BN3.prototype.imaskn = function imaskn(bits) {
-        assert2(typeof bits === "number" && bits >= 0);
-        var r3 = bits % 26;
-        var s2 = (bits - r3) / 26;
-        assert2(this.negative === 0, "imaskn works only with positive numbers");
-        if (this.length <= s2) {
-          return this;
-        }
-        if (r3 !== 0) {
-          s2++;
-        }
-        this.length = Math.min(s2, this.length);
-        if (r3 !== 0) {
-          var mask = 67108863 ^ 67108863 >>> r3 << r3;
-          this.words[this.length - 1] &= mask;
-        }
-        return this._strip();
-      };
-      BN3.prototype.maskn = function maskn(bits) {
-        return this.clone().imaskn(bits);
-      };
-      BN3.prototype.iaddn = function iaddn(num) {
-        assert2(typeof num === "number");
-        assert2(num < 67108864);
-        if (num < 0)
-          return this.isubn(-num);
-        if (this.negative !== 0) {
-          if (this.length === 1 && (this.words[0] | 0) <= num) {
-            this.words[0] = num - (this.words[0] | 0);
-            this.negative = 0;
-            return this;
-          }
-          this.negative = 0;
-          this.isubn(num);
-          this.negative = 1;
-          return this;
-        }
-        return this._iaddn(num);
-      };
-      BN3.prototype._iaddn = function _iaddn(num) {
-        this.words[0] += num;
-        for (var i2 = 0; i2 < this.length && this.words[i2] >= 67108864; i2++) {
-          this.words[i2] -= 67108864;
-          if (i2 === this.length - 1) {
-            this.words[i2 + 1] = 1;
-          } else {
-            this.words[i2 + 1]++;
-          }
-        }
-        this.length = Math.max(this.length, i2 + 1);
-        return this;
-      };
-      BN3.prototype.isubn = function isubn(num) {
-        assert2(typeof num === "number");
-        assert2(num < 67108864);
-        if (num < 0)
-          return this.iaddn(-num);
-        if (this.negative !== 0) {
-          this.negative = 0;
-          this.iaddn(num);
-          this.negative = 1;
-          return this;
-        }
-        this.words[0] -= num;
-        if (this.length === 1 && this.words[0] < 0) {
-          this.words[0] = -this.words[0];
-          this.negative = 1;
-        } else {
-          for (var i2 = 0; i2 < this.length && this.words[i2] < 0; i2++) {
-            this.words[i2] += 67108864;
-            this.words[i2 + 1] -= 1;
-          }
-        }
-        return this._strip();
-      };
-      BN3.prototype.addn = function addn(num) {
-        return this.clone().iaddn(num);
-      };
-      BN3.prototype.subn = function subn(num) {
-        return this.clone().isubn(num);
-      };
-      BN3.prototype.iabs = function iabs() {
-        this.negative = 0;
-        return this;
-      };
-      BN3.prototype.abs = function abs() {
-        return this.clone().iabs();
-      };
-      BN3.prototype._ishlnsubmul = function _ishlnsubmul(num, mul3, shift) {
-        var len = num.length + shift;
-        var i2;
-        this._expand(len);
-        var w2;
-        var carry = 0;
-        for (i2 = 0; i2 < num.length; i2++) {
-          w2 = (this.words[i2 + shift] | 0) + carry;
-          var right = (num.words[i2] | 0) * mul3;
-          w2 -= right & 67108863;
-          carry = (w2 >> 26) - (right / 67108864 | 0);
-          this.words[i2 + shift] = w2 & 67108863;
-        }
-        for (; i2 < this.length - shift; i2++) {
-          w2 = (this.words[i2 + shift] | 0) + carry;
-          carry = w2 >> 26;
-          this.words[i2 + shift] = w2 & 67108863;
-        }
-        if (carry === 0)
-          return this._strip();
-        assert2(carry === -1);
-        carry = 0;
-        for (i2 = 0; i2 < this.length; i2++) {
-          w2 = -(this.words[i2] | 0) + carry;
-          carry = w2 >> 26;
-          this.words[i2] = w2 & 67108863;
-        }
-        this.negative = 1;
-        return this._strip();
-      };
-      BN3.prototype._wordDiv = function _wordDiv(num, mode) {
-        var shift = this.length - num.length;
-        var a2 = this.clone();
-        var b2 = num;
-        var bhi = b2.words[b2.length - 1] | 0;
-        var bhiBits = this._countBits(bhi);
-        shift = 26 - bhiBits;
-        if (shift !== 0) {
-          b2 = b2.ushln(shift);
-          a2.iushln(shift);
-          bhi = b2.words[b2.length - 1] | 0;
-        }
-        var m2 = a2.length - b2.length;
-        var q2;
-        if (mode !== "mod") {
-          q2 = new BN3(null);
-          q2.length = m2 + 1;
-          q2.words = new Array(q2.length);
-          for (var i2 = 0; i2 < q2.length; i2++) {
-            q2.words[i2] = 0;
-          }
-        }
-        var diff = a2.clone()._ishlnsubmul(b2, 1, m2);
-        if (diff.negative === 0) {
-          a2 = diff;
-          if (q2) {
-            q2.words[m2] = 1;
-          }
-        }
-        for (var j2 = m2 - 1; j2 >= 0; j2--) {
-          var qj = (a2.words[b2.length + j2] | 0) * 67108864 + (a2.words[b2.length + j2 - 1] | 0);
-          qj = Math.min(qj / bhi | 0, 67108863);
-          a2._ishlnsubmul(b2, qj, j2);
-          while (a2.negative !== 0) {
-            qj--;
-            a2.negative = 0;
-            a2._ishlnsubmul(b2, 1, j2);
-            if (!a2.isZero()) {
-              a2.negative ^= 1;
-            }
-          }
-          if (q2) {
-            q2.words[j2] = qj;
-          }
-        }
-        if (q2) {
-          q2._strip();
-        }
-        a2._strip();
-        if (mode !== "div" && shift !== 0) {
-          a2.iushrn(shift);
-        }
-        return {
-          div: q2 || null,
-          mod: a2
-        };
-      };
-      BN3.prototype.divmod = function divmod(num, mode, positive) {
-        assert2(!num.isZero());
-        if (this.isZero()) {
-          return {
-            div: new BN3(0),
-            mod: new BN3(0)
-          };
-        }
-        var div, mod, res;
-        if (this.negative !== 0 && num.negative === 0) {
-          res = this.neg().divmod(num, mode);
-          if (mode !== "mod") {
-            div = res.div.neg();
-          }
-          if (mode !== "div") {
-            mod = res.mod.neg();
-            if (positive && mod.negative !== 0) {
-              mod.iadd(num);
-            }
-          }
-          return {
-            div,
-            mod
-          };
-        }
-        if (this.negative === 0 && num.negative !== 0) {
-          res = this.divmod(num.neg(), mode);
-          if (mode !== "mod") {
-            div = res.div.neg();
-          }
-          return {
-            div,
-            mod: res.mod
-          };
-        }
-        if ((this.negative & num.negative) !== 0) {
-          res = this.neg().divmod(num.neg(), mode);
-          if (mode !== "div") {
-            mod = res.mod.neg();
-            if (positive && mod.negative !== 0) {
-              mod.isub(num);
-            }
-          }
-          return {
-            div: res.div,
-            mod
-          };
-        }
-        if (num.length > this.length || this.cmp(num) < 0) {
-          return {
-            div: new BN3(0),
-            mod: this
-          };
-        }
-        if (num.length === 1) {
-          if (mode === "div") {
-            return {
-              div: this.divn(num.words[0]),
-              mod: null
-            };
-          }
-          if (mode === "mod") {
-            return {
-              div: null,
-              mod: new BN3(this.modrn(num.words[0]))
-            };
-          }
-          return {
-            div: this.divn(num.words[0]),
-            mod: new BN3(this.modrn(num.words[0]))
-          };
-        }
-        return this._wordDiv(num, mode);
-      };
-      BN3.prototype.div = function div(num) {
-        return this.divmod(num, "div", false).div;
-      };
-      BN3.prototype.mod = function mod(num) {
-        return this.divmod(num, "mod", false).mod;
-      };
-      BN3.prototype.umod = function umod(num) {
-        return this.divmod(num, "mod", true).mod;
-      };
-      BN3.prototype.divRound = function divRound(num) {
-        var dm = this.divmod(num);
-        if (dm.mod.isZero())
-          return dm.div;
-        var mod = dm.div.negative !== 0 ? dm.mod.isub(num) : dm.mod;
-        var half = num.ushrn(1);
-        var r22 = num.andln(1);
-        var cmp = mod.cmp(half);
-        if (cmp < 0 || r22 === 1 && cmp === 0)
-          return dm.div;
-        return dm.div.negative !== 0 ? dm.div.isubn(1) : dm.div.iaddn(1);
-      };
-      BN3.prototype.modrn = function modrn(num) {
-        var isNegNum = num < 0;
-        if (isNegNum)
-          num = -num;
-        assert2(num <= 67108863);
-        var p = (1 << 26) % num;
-        var acc = 0;
-        for (var i2 = this.length - 1; i2 >= 0; i2--) {
-          acc = (p * acc + (this.words[i2] | 0)) % num;
-        }
-        return isNegNum ? -acc : acc;
-      };
-      BN3.prototype.modn = function modn(num) {
-        return this.modrn(num);
-      };
-      BN3.prototype.idivn = function idivn(num) {
-        var isNegNum = num < 0;
-        if (isNegNum)
-          num = -num;
-        assert2(num <= 67108863);
-        var carry = 0;
-        for (var i2 = this.length - 1; i2 >= 0; i2--) {
-          var w2 = (this.words[i2] | 0) + carry * 67108864;
-          this.words[i2] = w2 / num | 0;
-          carry = w2 % num;
-        }
-        this._strip();
-        return isNegNum ? this.ineg() : this;
-      };
-      BN3.prototype.divn = function divn(num) {
-        return this.clone().idivn(num);
-      };
-      BN3.prototype.egcd = function egcd(p) {
-        assert2(p.negative === 0);
-        assert2(!p.isZero());
-        var x2 = this;
-        var y2 = p.clone();
-        if (x2.negative !== 0) {
-          x2 = x2.umod(p);
-        } else {
-          x2 = x2.clone();
-        }
-        var A = new BN3(1);
-        var B2 = new BN3(0);
-        var C2 = new BN3(0);
-        var D2 = new BN3(1);
-        var g2 = 0;
-        while (x2.isEven() && y2.isEven()) {
-          x2.iushrn(1);
-          y2.iushrn(1);
-          ++g2;
-        }
-        var yp = y2.clone();
-        var xp = x2.clone();
-        while (!x2.isZero()) {
-          for (var i2 = 0, im = 1; (x2.words[0] & im) === 0 && i2 < 26; ++i2, im <<= 1)
-            ;
-          if (i2 > 0) {
-            x2.iushrn(i2);
-            while (i2-- > 0) {
-              if (A.isOdd() || B2.isOdd()) {
-                A.iadd(yp);
-                B2.isub(xp);
-              }
-              A.iushrn(1);
-              B2.iushrn(1);
-            }
-          }
-          for (var j2 = 0, jm = 1; (y2.words[0] & jm) === 0 && j2 < 26; ++j2, jm <<= 1)
-            ;
-          if (j2 > 0) {
-            y2.iushrn(j2);
-            while (j2-- > 0) {
-              if (C2.isOdd() || D2.isOdd()) {
-                C2.iadd(yp);
-                D2.isub(xp);
-              }
-              C2.iushrn(1);
-              D2.iushrn(1);
-            }
-          }
-          if (x2.cmp(y2) >= 0) {
-            x2.isub(y2);
-            A.isub(C2);
-            B2.isub(D2);
-          } else {
-            y2.isub(x2);
-            C2.isub(A);
-            D2.isub(B2);
-          }
-        }
-        return {
-          a: C2,
-          b: D2,
-          gcd: y2.iushln(g2)
-        };
-      };
-      BN3.prototype._invmp = function _invmp(p) {
-        assert2(p.negative === 0);
-        assert2(!p.isZero());
-        var a2 = this;
-        var b2 = p.clone();
-        if (a2.negative !== 0) {
-          a2 = a2.umod(p);
-        } else {
-          a2 = a2.clone();
-        }
-        var x1 = new BN3(1);
-        var x2 = new BN3(0);
-        var delta = b2.clone();
-        while (a2.cmpn(1) > 0 && b2.cmpn(1) > 0) {
-          for (var i2 = 0, im = 1; (a2.words[0] & im) === 0 && i2 < 26; ++i2, im <<= 1)
-            ;
-          if (i2 > 0) {
-            a2.iushrn(i2);
-            while (i2-- > 0) {
-              if (x1.isOdd()) {
-                x1.iadd(delta);
-              }
-              x1.iushrn(1);
-            }
-          }
-          for (var j2 = 0, jm = 1; (b2.words[0] & jm) === 0 && j2 < 26; ++j2, jm <<= 1)
-            ;
-          if (j2 > 0) {
-            b2.iushrn(j2);
-            while (j2-- > 0) {
-              if (x2.isOdd()) {
-                x2.iadd(delta);
-              }
-              x2.iushrn(1);
-            }
-          }
-          if (a2.cmp(b2) >= 0) {
-            a2.isub(b2);
-            x1.isub(x2);
-          } else {
-            b2.isub(a2);
-            x2.isub(x1);
-          }
-        }
-        var res;
-        if (a2.cmpn(1) === 0) {
-          res = x1;
-        } else {
-          res = x2;
-        }
-        if (res.cmpn(0) < 0) {
-          res.iadd(p);
-        }
-        return res;
-      };
-      BN3.prototype.gcd = function gcd(num) {
-        if (this.isZero())
-          return num.abs();
-        if (num.isZero())
-          return this.abs();
-        var a2 = this.clone();
-        var b2 = num.clone();
-        a2.negative = 0;
-        b2.negative = 0;
-        for (var shift = 0; a2.isEven() && b2.isEven(); shift++) {
-          a2.iushrn(1);
-          b2.iushrn(1);
-        }
-        do {
-          while (a2.isEven()) {
-            a2.iushrn(1);
-          }
-          while (b2.isEven()) {
-            b2.iushrn(1);
-          }
-          var r3 = a2.cmp(b2);
-          if (r3 < 0) {
-            var t2 = a2;
-            a2 = b2;
-            b2 = t2;
-          } else if (r3 === 0 || b2.cmpn(1) === 0) {
-            break;
-          }
-          a2.isub(b2);
-        } while (true);
-        return b2.iushln(shift);
-      };
-      BN3.prototype.invm = function invm(num) {
-        return this.egcd(num).a.umod(num);
-      };
-      BN3.prototype.isEven = function isEven() {
-        return (this.words[0] & 1) === 0;
-      };
-      BN3.prototype.isOdd = function isOdd() {
-        return (this.words[0] & 1) === 1;
-      };
-      BN3.prototype.andln = function andln(num) {
-        return this.words[0] & num;
-      };
-      BN3.prototype.bincn = function bincn(bit) {
-        assert2(typeof bit === "number");
-        var r3 = bit % 26;
-        var s2 = (bit - r3) / 26;
-        var q2 = 1 << r3;
-        if (this.length <= s2) {
-          this._expand(s2 + 1);
-          this.words[s2] |= q2;
-          return this;
-        }
-        var carry = q2;
-        for (var i2 = s2; carry !== 0 && i2 < this.length; i2++) {
-          var w2 = this.words[i2] | 0;
-          w2 += carry;
-          carry = w2 >>> 26;
-          w2 &= 67108863;
-          this.words[i2] = w2;
-        }
-        if (carry !== 0) {
-          this.words[i2] = carry;
-          this.length++;
-        }
-        return this;
-      };
-      BN3.prototype.isZero = function isZero() {
-        return this.length === 1 && this.words[0] === 0;
-      };
-      BN3.prototype.cmpn = function cmpn(num) {
-        var negative = num < 0;
-        if (this.negative !== 0 && !negative)
-          return -1;
-        if (this.negative === 0 && negative)
-          return 1;
-        this._strip();
-        var res;
-        if (this.length > 1) {
-          res = 1;
-        } else {
-          if (negative) {
-            num = -num;
-          }
-          assert2(num <= 67108863, "Number is too big");
-          var w2 = this.words[0] | 0;
-          res = w2 === num ? 0 : w2 < num ? -1 : 1;
-        }
-        if (this.negative !== 0)
-          return -res | 0;
-        return res;
-      };
-      BN3.prototype.cmp = function cmp(num) {
-        if (this.negative !== 0 && num.negative === 0)
-          return -1;
-        if (this.negative === 0 && num.negative !== 0)
-          return 1;
-        var res = this.ucmp(num);
-        if (this.negative !== 0)
-          return -res | 0;
-        return res;
-      };
-      BN3.prototype.ucmp = function ucmp(num) {
-        if (this.length > num.length)
-          return 1;
-        if (this.length < num.length)
-          return -1;
-        var res = 0;
-        for (var i2 = this.length - 1; i2 >= 0; i2--) {
-          var a2 = this.words[i2] | 0;
-          var b2 = num.words[i2] | 0;
-          if (a2 === b2)
-            continue;
-          if (a2 < b2) {
-            res = -1;
-          } else if (a2 > b2) {
-            res = 1;
-          }
-          break;
-        }
-        return res;
-      };
-      BN3.prototype.gtn = function gtn(num) {
-        return this.cmpn(num) === 1;
-      };
-      BN3.prototype.gt = function gt(num) {
-        return this.cmp(num) === 1;
-      };
-      BN3.prototype.gten = function gten(num) {
-        return this.cmpn(num) >= 0;
-      };
-      BN3.prototype.gte = function gte(num) {
-        return this.cmp(num) >= 0;
-      };
-      BN3.prototype.ltn = function ltn(num) {
-        return this.cmpn(num) === -1;
-      };
-      BN3.prototype.lt = function lt(num) {
-        return this.cmp(num) === -1;
-      };
-      BN3.prototype.lten = function lten(num) {
-        return this.cmpn(num) <= 0;
-      };
-      BN3.prototype.lte = function lte(num) {
-        return this.cmp(num) <= 0;
-      };
-      BN3.prototype.eqn = function eqn(num) {
-        return this.cmpn(num) === 0;
-      };
-      BN3.prototype.eq = function eq4(num) {
-        return this.cmp(num) === 0;
-      };
-      BN3.red = function red(num) {
-        return new Red2(num);
-      };
-      BN3.prototype.toRed = function toRed(ctx) {
-        assert2(!this.red, "Already a number in reduction context");
-        assert2(this.negative === 0, "red works only with positives");
-        return ctx.convertTo(this)._forceRed(ctx);
-      };
-      BN3.prototype.fromRed = function fromRed() {
-        assert2(this.red, "fromRed works only with numbers in reduction context");
-        return this.red.convertFrom(this);
-      };
-      BN3.prototype._forceRed = function _forceRed(ctx) {
-        this.red = ctx;
-        return this;
-      };
-      BN3.prototype.forceRed = function forceRed(ctx) {
-        assert2(!this.red, "Already a number in reduction context");
-        return this._forceRed(ctx);
-      };
-      BN3.prototype.redAdd = function redAdd(num) {
-        assert2(this.red, "redAdd works only with red numbers");
-        return this.red.add(this, num);
-      };
-      BN3.prototype.redIAdd = function redIAdd(num) {
-        assert2(this.red, "redIAdd works only with red numbers");
-        return this.red.iadd(this, num);
-      };
-      BN3.prototype.redSub = function redSub(num) {
-        assert2(this.red, "redSub works only with red numbers");
-        return this.red.sub(this, num);
-      };
-      BN3.prototype.redISub = function redISub(num) {
-        assert2(this.red, "redISub works only with red numbers");
-        return this.red.isub(this, num);
-      };
-      BN3.prototype.redShl = function redShl(num) {
-        assert2(this.red, "redShl works only with red numbers");
-        return this.red.shl(this, num);
-      };
-      BN3.prototype.redMul = function redMul(num) {
-        assert2(this.red, "redMul works only with red numbers");
-        this.red._verify2(this, num);
-        return this.red.mul(this, num);
-      };
-      BN3.prototype.redIMul = function redIMul(num) {
-        assert2(this.red, "redMul works only with red numbers");
-        this.red._verify2(this, num);
-        return this.red.imul(this, num);
-      };
-      BN3.prototype.redSqr = function redSqr() {
-        assert2(this.red, "redSqr works only with red numbers");
-        this.red._verify1(this);
-        return this.red.sqr(this);
-      };
-      BN3.prototype.redISqr = function redISqr() {
-        assert2(this.red, "redISqr works only with red numbers");
-        this.red._verify1(this);
-        return this.red.isqr(this);
-      };
-      BN3.prototype.redSqrt = function redSqrt() {
-        assert2(this.red, "redSqrt works only with red numbers");
-        this.red._verify1(this);
-        return this.red.sqrt(this);
-      };
-      BN3.prototype.redInvm = function redInvm() {
-        assert2(this.red, "redInvm works only with red numbers");
-        this.red._verify1(this);
-        return this.red.invm(this);
-      };
-      BN3.prototype.redNeg = function redNeg() {
-        assert2(this.red, "redNeg works only with red numbers");
-        this.red._verify1(this);
-        return this.red.neg(this);
-      };
-      BN3.prototype.redPow = function redPow(num) {
-        assert2(this.red && !num.red, "redPow(normalNum)");
-        this.red._verify1(this);
-        return this.red.pow(this, num);
-      };
-      var primes = {
-        k256: null,
-        p224: null,
-        p192: null,
-        p25519: null
-      };
-      function MPrime(name, p) {
-        this.name = name;
-        this.p = new BN3(p, 16);
-        this.n = this.p.bitLength();
-        this.k = new BN3(1).iushln(this.n).isub(this.p);
-        this.tmp = this._tmp();
-      }
-      MPrime.prototype._tmp = function _tmp() {
-        var tmp = new BN3(null);
-        tmp.words = new Array(Math.ceil(this.n / 13));
-        return tmp;
-      };
-      MPrime.prototype.ireduce = function ireduce(num) {
-        var r3 = num;
-        var rlen;
-        do {
-          this.split(r3, this.tmp);
-          r3 = this.imulK(r3);
-          r3 = r3.iadd(this.tmp);
-          rlen = r3.bitLength();
-        } while (rlen > this.n);
-        var cmp = rlen < this.n ? -1 : r3.ucmp(this.p);
-        if (cmp === 0) {
-          r3.words[0] = 0;
-          r3.length = 1;
-        } else if (cmp > 0) {
-          r3.isub(this.p);
-        } else {
-          if (r3.strip !== void 0) {
-            r3.strip();
-          } else {
-            r3._strip();
-          }
-        }
-        return r3;
-      };
-      MPrime.prototype.split = function split(input, out) {
-        input.iushrn(this.n, 0, out);
-      };
-      MPrime.prototype.imulK = function imulK(num) {
-        return num.imul(this.k);
-      };
-      function K256() {
-        MPrime.call(this, "k256", "ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff fffffffe fffffc2f");
-      }
-      inherits(K256, MPrime);
-      K256.prototype.split = function split(input, output) {
-        var mask = 4194303;
-        var outLen = Math.min(input.length, 9);
-        for (var i2 = 0; i2 < outLen; i2++) {
-          output.words[i2] = input.words[i2];
-        }
-        output.length = outLen;
-        if (input.length <= 9) {
-          input.words[0] = 0;
-          input.length = 1;
-          return;
-        }
-        var prev = input.words[9];
-        output.words[output.length++] = prev & mask;
-        for (i2 = 10; i2 < input.length; i2++) {
-          var next = input.words[i2] | 0;
-          input.words[i2 - 10] = (next & mask) << 4 | prev >>> 22;
-          prev = next;
-        }
-        prev >>>= 22;
-        input.words[i2 - 10] = prev;
-        if (prev === 0 && input.length > 10) {
-          input.length -= 10;
-        } else {
-          input.length -= 9;
-        }
-      };
-      K256.prototype.imulK = function imulK(num) {
-        num.words[num.length] = 0;
-        num.words[num.length + 1] = 0;
-        num.length += 2;
-        var lo = 0;
-        for (var i2 = 0; i2 < num.length; i2++) {
-          var w2 = num.words[i2] | 0;
-          lo += w2 * 977;
-          num.words[i2] = lo & 67108863;
-          lo = w2 * 64 + (lo / 67108864 | 0);
-        }
-        if (num.words[num.length - 1] === 0) {
-          num.length--;
-          if (num.words[num.length - 1] === 0) {
-            num.length--;
-          }
-        }
-        return num;
-      };
-      function P224() {
-        MPrime.call(this, "p224", "ffffffff ffffffff ffffffff ffffffff 00000000 00000000 00000001");
-      }
-      inherits(P224, MPrime);
-      function P192() {
-        MPrime.call(this, "p192", "ffffffff ffffffff ffffffff fffffffe ffffffff ffffffff");
-      }
-      inherits(P192, MPrime);
-      function P25519() {
-        MPrime.call(this, "25519", "7fffffffffffffff ffffffffffffffff ffffffffffffffff ffffffffffffffed");
-      }
-      inherits(P25519, MPrime);
-      P25519.prototype.imulK = function imulK(num) {
-        var carry = 0;
-        for (var i2 = 0; i2 < num.length; i2++) {
-          var hi = (num.words[i2] | 0) * 19 + carry;
-          var lo = hi & 67108863;
-          hi >>>= 26;
-          num.words[i2] = lo;
-          carry = hi;
-        }
-        if (carry !== 0) {
-          num.words[num.length++] = carry;
-        }
-        return num;
-      };
-      BN3._prime = function prime(name) {
-        if (primes[name])
-          return primes[name];
-        var prime2;
-        if (name === "k256") {
-          prime2 = new K256();
-        } else if (name === "p224") {
-          prime2 = new P224();
-        } else if (name === "p192") {
-          prime2 = new P192();
-        } else if (name === "p25519") {
-          prime2 = new P25519();
-        } else {
-          throw new Error("Unknown prime " + name);
-        }
-        primes[name] = prime2;
-        return prime2;
-      };
-      function Red2(m2) {
-        if (typeof m2 === "string") {
-          var prime = BN3._prime(m2);
-          this.m = prime.p;
-          this.prime = prime;
-        } else {
-          assert2(m2.gtn(1), "modulus must be greater than 1");
-          this.m = m2;
-          this.prime = null;
-        }
-      }
-      Red2.prototype._verify1 = function _verify1(a2) {
-        assert2(a2.negative === 0, "red works only with positives");
-        assert2(a2.red, "red works only with red numbers");
-      };
-      Red2.prototype._verify2 = function _verify2(a2, b2) {
-        assert2((a2.negative | b2.negative) === 0, "red works only with positives");
-        assert2(a2.red && a2.red === b2.red, "red works only with red numbers");
-      };
-      Red2.prototype.imod = function imod(a2) {
-        if (this.prime)
-          return this.prime.ireduce(a2)._forceRed(this);
-        move(a2, a2.umod(this.m)._forceRed(this));
-        return a2;
-      };
-      Red2.prototype.neg = function neg3(a2) {
-        if (a2.isZero()) {
-          return a2.clone();
-        }
-        return this.m.sub(a2)._forceRed(this);
-      };
-      Red2.prototype.add = function add3(a2, b2) {
-        this._verify2(a2, b2);
-        var res = a2.add(b2);
-        if (res.cmp(this.m) >= 0) {
-          res.isub(this.m);
-        }
-        return res._forceRed(this);
-      };
-      Red2.prototype.iadd = function iadd(a2, b2) {
-        this._verify2(a2, b2);
-        var res = a2.iadd(b2);
-        if (res.cmp(this.m) >= 0) {
-          res.isub(this.m);
-        }
-        return res;
-      };
-      Red2.prototype.sub = function sub(a2, b2) {
-        this._verify2(a2, b2);
-        var res = a2.sub(b2);
-        if (res.cmpn(0) < 0) {
-          res.iadd(this.m);
-        }
-        return res._forceRed(this);
-      };
-      Red2.prototype.isub = function isub(a2, b2) {
-        this._verify2(a2, b2);
-        var res = a2.isub(b2);
-        if (res.cmpn(0) < 0) {
-          res.iadd(this.m);
-        }
-        return res;
-      };
-      Red2.prototype.shl = function shl(a2, num) {
-        this._verify1(a2);
-        return this.imod(a2.ushln(num));
-      };
-      Red2.prototype.imul = function imul(a2, b2) {
-        this._verify2(a2, b2);
-        return this.imod(a2.imul(b2));
-      };
-      Red2.prototype.mul = function mul3(a2, b2) {
-        this._verify2(a2, b2);
-        return this.imod(a2.mul(b2));
-      };
-      Red2.prototype.isqr = function isqr(a2) {
-        return this.imul(a2, a2.clone());
-      };
-      Red2.prototype.sqr = function sqr(a2) {
-        return this.mul(a2, a2);
-      };
-      Red2.prototype.sqrt = function sqrt(a2) {
-        if (a2.isZero())
-          return a2.clone();
-        var mod3 = this.m.andln(3);
-        assert2(mod3 % 2 === 1);
-        if (mod3 === 3) {
-          var pow = this.m.add(new BN3(1)).iushrn(2);
-          return this.pow(a2, pow);
-        }
-        var q2 = this.m.subn(1);
-        var s2 = 0;
-        while (!q2.isZero() && q2.andln(1) === 0) {
-          s2++;
-          q2.iushrn(1);
-        }
-        assert2(!q2.isZero());
-        var one = new BN3(1).toRed(this);
-        var nOne = one.redNeg();
-        var lpow = this.m.subn(1).iushrn(1);
-        var z2 = this.m.bitLength();
-        z2 = new BN3(2 * z2 * z2).toRed(this);
-        while (this.pow(z2, lpow).cmp(nOne) !== 0) {
-          z2.redIAdd(nOne);
-        }
-        var c2 = this.pow(z2, q2);
-        var r3 = this.pow(a2, q2.addn(1).iushrn(1));
-        var t2 = this.pow(a2, q2);
-        var m2 = s2;
-        while (t2.cmp(one) !== 0) {
-          var tmp = t2;
-          for (var i2 = 0; tmp.cmp(one) !== 0; i2++) {
-            tmp = tmp.redSqr();
-          }
-          assert2(i2 < m2);
-          var b2 = this.pow(c2, new BN3(1).iushln(m2 - i2 - 1));
-          r3 = r3.redMul(b2);
-          c2 = b2.redSqr();
-          t2 = t2.redMul(c2);
-          m2 = i2;
-        }
-        return r3;
-      };
-      Red2.prototype.invm = function invm(a2) {
-        var inv = a2._invmp(this.m);
-        if (inv.negative !== 0) {
-          inv.negative = 0;
-          return this.imod(inv).redNeg();
-        } else {
-          return this.imod(inv);
-        }
-      };
-      Red2.prototype.pow = function pow(a2, num) {
-        if (num.isZero())
-          return new BN3(1).toRed(this);
-        if (num.cmpn(1) === 0)
-          return a2.clone();
-        var windowSize = 4;
-        var wnd = new Array(1 << windowSize);
-        wnd[0] = new BN3(1).toRed(this);
-        wnd[1] = a2;
-        for (var i2 = 2; i2 < wnd.length; i2++) {
-          wnd[i2] = this.mul(wnd[i2 - 1], a2);
-        }
-        var res = wnd[0];
-        var current = 0;
-        var currentLen = 0;
-        var start = num.bitLength() % 26;
-        if (start === 0) {
-          start = 26;
-        }
-        for (i2 = num.length - 1; i2 >= 0; i2--) {
-          var word = num.words[i2];
-          for (var j2 = start - 1; j2 >= 0; j2--) {
-            var bit = word >> j2 & 1;
-            if (res !== wnd[0]) {
-              res = this.sqr(res);
-            }
-            if (bit === 0 && current === 0) {
-              currentLen = 0;
-              continue;
-            }
-            current <<= 1;
-            current |= bit;
-            currentLen++;
-            if (currentLen !== windowSize && (i2 !== 0 || j2 !== 0))
-              continue;
-            res = this.mul(res, wnd[current]);
-            currentLen = 0;
-            current = 0;
-          }
-          start = 26;
-        }
-        return res;
-      };
-      Red2.prototype.convertTo = function convertTo(num) {
-        var r3 = num.umod(this.m);
-        return r3 === num ? r3.clone() : r3;
-      };
-      Red2.prototype.convertFrom = function convertFrom(num) {
-        var res = num.clone();
-        res.red = null;
-        return res;
-      };
-      BN3.mont = function mont(num) {
-        return new Mont(num);
-      };
-      function Mont(m2) {
-        Red2.call(this, m2);
-        this.shift = this.m.bitLength();
-        if (this.shift % 26 !== 0) {
-          this.shift += 26 - this.shift % 26;
-        }
-        this.r = new BN3(1).iushln(this.shift);
-        this.r2 = this.imod(this.r.sqr());
-        this.rinv = this.r._invmp(this.m);
-        this.minv = this.rinv.mul(this.r).isubn(1).div(this.m);
-        this.minv = this.minv.umod(this.r);
-        this.minv = this.r.sub(this.minv);
-      }
-      inherits(Mont, Red2);
-      Mont.prototype.convertTo = function convertTo(num) {
-        return this.imod(num.ushln(this.shift));
-      };
-      Mont.prototype.convertFrom = function convertFrom(num) {
-        var r3 = this.imod(num.mul(this.rinv));
-        r3.red = null;
-        return r3;
-      };
-      Mont.prototype.imul = function imul(a2, b2) {
-        if (a2.isZero() || b2.isZero()) {
-          a2.words[0] = 0;
-          a2.length = 1;
-          return a2;
-        }
-        var t2 = a2.imul(b2);
-        var c2 = t2.maskn(this.shift).mul(this.minv).imaskn(this.shift).mul(this.m);
-        var u2 = t2.isub(c2).iushrn(this.shift);
-        var res = u2;
-        if (u2.cmp(this.m) >= 0) {
-          res = u2.isub(this.m);
-        } else if (u2.cmpn(0) < 0) {
-          res = u2.iadd(this.m);
-        }
-        return res._forceRed(this);
-      };
-      Mont.prototype.mul = function mul3(a2, b2) {
-        if (a2.isZero() || b2.isZero())
-          return new BN3(0)._forceRed(this);
-        var t2 = a2.mul(b2);
-        var c2 = t2.maskn(this.shift).mul(this.minv).imaskn(this.shift).mul(this.m);
-        var u2 = t2.isub(c2).iushrn(this.shift);
-        var res = u2;
-        if (u2.cmp(this.m) >= 0) {
-          res = u2.isub(this.m);
-        } else if (u2.cmpn(0) < 0) {
-          res = u2.iadd(this.m);
-        }
-        return res._forceRed(this);
-      };
-      Mont.prototype.invm = function invm(a2) {
-        var res = this.imod(a2._invmp(this.m).mul(this.r2));
-        return res._forceRed(this);
-      };
-    })(typeof module === "undefined" || module, exports);
-  }
-});
-
 // node_modules/minimalistic-assert/index.js
 var require_minimalistic_assert = __commonJS({
   "node_modules/minimalistic-assert/index.js"(exports, module) {
@@ -28381,9 +25483,9 @@ var require_hash = __commonJS({
   }
 });
 
-// node_modules/aes-js/index.js
+// node_modules/@ethersproject/json-wallets/node_modules/aes-js/index.js
 var require_aes_js = __commonJS({
-  "node_modules/aes-js/index.js"(exports, module) {
+  "node_modules/@ethersproject/json-wallets/node_modules/aes-js/index.js"(exports, module) {
     "use strict";
     (function(root) {
       function checkInt(value) {
@@ -31314,6 +28416,44 @@ var require_event2 = __commonJS({
   }
 });
 
+// node_modules/@dfares/serde/dist/kardashev.js
+var require_kardashev2 = __commonJS({
+  "node_modules/@dfares/serde/dist/kardashev.js"(exports) {
+    "use strict";
+    var __importDefault = exports && exports.__importDefault || function(mod) {
+      return mod && mod.__esModule ? mod : { "default": mod };
+    };
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.decodeKardashevCoords = void 0;
+    var constants_1 = require_dist2();
+    var big_integer_1 = __importDefault(require_BigInteger());
+    var address_1 = require_address();
+    var location_1 = require_location();
+    function decodeKardashevCoords(rawKardashevCoords) {
+      const locationId = (0, location_1.locationIdFromDecStr)(rawKardashevCoords.locationId.toString());
+      let xBI = (0, big_integer_1.default)(rawKardashevCoords.x.toString());
+      let yBI = (0, big_integer_1.default)(rawKardashevCoords.y.toString());
+      let x2 = 0;
+      let y2 = 0;
+      if (xBI.gt(constants_1.LOCATION_ID_UB.divide(2))) {
+        xBI = xBI.minus(constants_1.LOCATION_ID_UB);
+      }
+      x2 = xBI.toJSNumber();
+      if (yBI.gt(constants_1.LOCATION_ID_UB.divide(2))) {
+        yBI = yBI.minus(constants_1.LOCATION_ID_UB);
+      }
+      y2 = yBI.toJSNumber();
+      return {
+        hash: locationId,
+        x: x2,
+        y: y2,
+        operator: (0, address_1.address)(rawKardashevCoords.operator)
+      };
+    }
+    exports.decodeKardashevCoords = decodeKardashevCoords;
+  }
+});
+
 // node_modules/@dfares/hexgen/dist/index.js
 var require_dist3 = __commonJS({
   "node_modules/@dfares/hexgen/dist/index.js"(exports) {
@@ -31411,8 +28551,11 @@ var require_planet2 = __commonJS({
         invader: (0, address_1.address)(rawPlanet.invader),
         capturer: (0, address_1.address)(rawPlanet.capturer),
         invadeStartBlock: rawPlanet.invadeStartBlock.eq(0) ? void 0 : rawPlanet.invadeStartBlock.toNumber(),
-        operator: (0, address_1.address)(rawPlanet.operator),
-        burnStartTimestamp: rawPlanet.burnStartTimestamp.toNumber()
+        burnOperator: (0, address_1.address)(rawPlanet.burnOperator),
+        burnStartTimestamp: rawPlanet.burnStartTimestamp.toNumber(),
+        pinkOperator: (0, address_1.address)(rawPlanet.pinkOperator),
+        kardashevOperator: (0, address_1.address)(rawPlanet.kardashevOperator),
+        kardashevTimestamp: rawPlanet.kardashevTimestamp.toNumber()
       };
       return planet;
     }
@@ -31450,6 +28593,7 @@ var require_player2 = __commonJS({
         lastRevealTimestamp: rawPlayer.lastRevealTimestamp.toNumber(),
         lastClaimTimestamp: rawPlayer.lastRevealTimestamp.toNumber(),
         lastBurnTimestamp: rawPlayer.lastRevealTimestamp.toNumber(),
+        lastKardashevTimestamp: rawPlayer.lastRevealTimestamp.toNumber(),
         lastActivateArtifactTimestamp: rawPlayer.lastRevealTimestamp.toNumber(),
         lastBuyArtifactTimestamp: rawPlayer.lastRevealTimestamp.toNumber(),
         score: rawPlayer.score.toNumber(),
@@ -31465,7 +28609,10 @@ var require_player2 = __commonJS({
         pinkAmount: rawPlayer.pinkAmount.toNumber(),
         pinkedAmount: rawPlayer.pinkedAmount.toNumber(),
         moveCount: rawPlayer.moveCount.toNumber(),
-        hatCount: rawPlayer.hatCount.toNumber()
+        hatCount: rawPlayer.hatCount.toNumber(),
+        kardashevAmount: rawPlayer.kardashevAmount.toNumber(),
+        buyPlanetId: (0, location_1.locationIdFromEthersBN)(rawPlayer.buyPlanetId),
+        buySpaceshipAmount: rawPlayer.buySpaceshipAmount.toNumber()
       };
     }
     exports.decodePlayer = decodePlayer;
@@ -31515,7 +28662,8 @@ var require_transactions2 = __commonJS({
   "node_modules/@dfares/serde/dist/transactions.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.isUnconfirmedUseKeyTx = exports.isUnconfirmedPinkTx = exports.isUnconfirmedBurnTx = exports.isUnconfirmedCapturePlanetTx = exports.isUnconfirmedInvadePlanetTx = exports.isUnconfirmedGetShipsTx = exports.isUnconfirmedWithdrawSilverTx = exports.isUnconfirmedBuyArtifactTx = exports.isUnconfirmedChangeArtifactImageTypeTx = exports.isUnconfirmedDeactivateArtifactTx = exports.isUnconfirmedActivateArtifactTx = exports.isUnconfirmedProspectPlanetTx = exports.isUnconfirmedWithdrawArtifactTx = exports.isUnconfirmedDepositArtifactTx = exports.isUnconfirmedFindArtifactTx = exports.isUnconfirmedTransferTx = exports.isUnconfirmedBuyHatTx = exports.isUnconfirmedUpgradeTx = exports.isUnconfirmedReleaseTx = exports.isUnconfirmedMoveTx = exports.isUnconfirmedInitTx = exports.isUnconfirmedClaimTx = exports.isUnconfirmedRevealTx = exports.isUnconfirmedUseKey = exports.isUnconfirmedInvadePlanet = exports.isUnconfirmedPink = exports.isUnconfirmedBurn = exports.isUnconfirmedCapturePlanet = exports.isUnconfirmedGetShips = exports.isUnconfirmedWithdrawSilver = exports.isUnconfirmedBuyArtifact = exports.isUnconfirmedChangeArtifactImageType = exports.isUnconfirmedDeactivateArtifact = exports.isUnconfirmedActivateArtifact = exports.isUnconfirmedProspectPlanet = exports.isUnconfirmedWithdrawArtifact = exports.isUnconfirmedDepositArtifact = exports.isUnconfirmedFindArtifact = exports.isUnconfirmedTransfer = exports.isUnconfirmedBuyHat = exports.isUnconfirmedUpgrade = exports.isUnconfirmedRelease = exports.isUnconfirmedMove = exports.isUnconfirmedInit = exports.isUnconfirmedClaim = exports.isUnconfirmedReveal = void 0;
+    exports.isUnconfirmedBurnTx = exports.isUnconfirmedCapturePlanetTx = exports.isUnconfirmedInvadePlanetTx = exports.isUnconfirmedGetShipsTx = exports.isUnconfirmedWithdrawSilverTx = exports.isUnconfirmedBuyArtifactTx = exports.isUnconfirmedChangeArtifactImageTypeTx = exports.isUnconfirmedDeactivateArtifactTx = exports.isUnconfirmedActivateArtifactTx = exports.isUnconfirmedProspectPlanetTx = exports.isUnconfirmedWithdrawArtifactTx = exports.isUnconfirmedDepositArtifactTx = exports.isUnconfirmedFindArtifactTx = exports.isUnconfirmedTransferTx = exports.isUnconfirmedBuyHatTx = exports.isUnconfirmedRefreshPlanetTx = exports.isUnconfirmedUpgradeTx = exports.isUnconfirmedReleaseTx = exports.isUnconfirmedMoveTx = exports.isUnconfirmedInitTx = exports.isUnconfirmedClaimTx = exports.isUnconfirmedRevealTx = exports.isUnconfirmedUseKey = exports.isUnconfirmedInvadePlanet = exports.isUnconfirmedBuySpaceship = exports.isUnconfirmedBuyPlanet = exports.isUnconfirmedBlue = exports.isUnconfirmedKardashev = exports.isUnconfirmedPink = exports.isUnconfirmedBurn = exports.isUnconfirmedCapturePlanet = exports.isUnconfirmedGetShips = exports.isUnconfirmedWithdrawSilver = exports.isUnconfirmedBuyArtifact = exports.isUnconfirmedChangeArtifactImageType = exports.isUnconfirmedDeactivateArtifact = exports.isUnconfirmedActivateArtifact = exports.isUnconfirmedProspectPlanet = exports.isUnconfirmedWithdrawArtifact = exports.isUnconfirmedDepositArtifact = exports.isUnconfirmedFindArtifact = exports.isUnconfirmedTransfer = exports.isUnconfirmedBuyHat = exports.isUnconfirmedRefreshPlanet = exports.isUnconfirmedUpgrade = exports.isUnconfirmedRelease = exports.isUnconfirmedMove = exports.isUnconfirmedInit = exports.isUnconfirmedClaim = exports.isUnconfirmedReveal = void 0;
+    exports.isUnconfirmedBuySpaceshipTx = exports.isUnconfirmedBuyPlanetTx = exports.isUnconfirmedBlueTx = exports.isUnconfirmedKardashevTx = exports.isUnconfirmedUseKeyTx = exports.isUnconfirmedPinkTx = void 0;
     function isUnconfirmedReveal(txIntent) {
       return txIntent.methodName === "revealLocation";
     }
@@ -31540,6 +28688,10 @@ var require_transactions2 = __commonJS({
       return txIntent.methodName === "upgradePlanet";
     }
     exports.isUnconfirmedUpgrade = isUnconfirmedUpgrade;
+    function isUnconfirmedRefreshPlanet(txIntent) {
+      return txIntent.methodName === "refreshPlanet";
+    }
+    exports.isUnconfirmedRefreshPlanet = isUnconfirmedRefreshPlanet;
     function isUnconfirmedBuyHat(txIntent) {
       return txIntent.methodName === "buyHat";
     }
@@ -31600,6 +28752,22 @@ var require_transactions2 = __commonJS({
       return txIntent.methodName === "pinkLocation";
     }
     exports.isUnconfirmedPink = isUnconfirmedPink;
+    function isUnconfirmedKardashev(txIntent) {
+      return txIntent.methodName === "kardashev";
+    }
+    exports.isUnconfirmedKardashev = isUnconfirmedKardashev;
+    function isUnconfirmedBlue(txIntent) {
+      return txIntent.methodName === "blueLocation";
+    }
+    exports.isUnconfirmedBlue = isUnconfirmedBlue;
+    function isUnconfirmedBuyPlanet(txIntent) {
+      return txIntent.methodName === "buyPlanet";
+    }
+    exports.isUnconfirmedBuyPlanet = isUnconfirmedBuyPlanet;
+    function isUnconfirmedBuySpaceship(txIntent) {
+      return txIntent.methodName === "buySpaceship";
+    }
+    exports.isUnconfirmedBuySpaceship = isUnconfirmedBuySpaceship;
     function isUnconfirmedInvadePlanet(txIntent) {
       return txIntent.methodName === "invadePlanet";
     }
@@ -31632,6 +28800,10 @@ var require_transactions2 = __commonJS({
       return isUnconfirmedUpgrade(tx.intent);
     }
     exports.isUnconfirmedUpgradeTx = isUnconfirmedUpgradeTx;
+    function isUnconfirmedRefreshPlanetTx(tx) {
+      return isUnconfirmedRefreshPlanet(tx.intent);
+    }
+    exports.isUnconfirmedRefreshPlanetTx = isUnconfirmedRefreshPlanetTx;
     function isUnconfirmedBuyHatTx(tx) {
       return isUnconfirmedBuyHat(tx.intent);
     }
@@ -31700,6 +28872,22 @@ var require_transactions2 = __commonJS({
       return isUnconfirmedUseKey(tx.intent);
     }
     exports.isUnconfirmedUseKeyTx = isUnconfirmedUseKeyTx;
+    function isUnconfirmedKardashevTx(tx) {
+      return isUnconfirmedKardashev(tx.intent);
+    }
+    exports.isUnconfirmedKardashevTx = isUnconfirmedKardashevTx;
+    function isUnconfirmedBlueTx(tx) {
+      return isUnconfirmedBlue(tx.intent);
+    }
+    exports.isUnconfirmedBlueTx = isUnconfirmedBlueTx;
+    function isUnconfirmedBuyPlanetTx(tx) {
+      return isUnconfirmedBuyPlanet(tx.intent);
+    }
+    exports.isUnconfirmedBuyPlanetTx = isUnconfirmedBuyPlanetTx;
+    function isUnconfirmedBuySpaceshipTx(tx) {
+      return isUnconfirmedBuySpaceship(tx.intent);
+    }
+    exports.isUnconfirmedBuySpaceshipTx = isUnconfirmedBuySpaceshipTx;
   }
 });
 
@@ -31730,6 +28918,7 @@ var require_dist4 = __commonJS({
     __exportStar(require_burn2(), exports);
     __exportStar(require_claim2(), exports);
     __exportStar(require_event2(), exports);
+    __exportStar(require_kardashev2(), exports);
     __exportStar(require_location(), exports);
     __exportStar(require_planet2(), exports);
     __exportStar(require_player2(), exports);
@@ -32457,9 +29646,9 @@ var require_color_name = __commonJS({
   }
 });
 
-// node_modules/is-arrayish/index.js
+// node_modules/simple-swizzle/node_modules/is-arrayish/index.js
 var require_is_arrayish = __commonJS({
-  "node_modules/is-arrayish/index.js"(exports, module) {
+  "node_modules/simple-swizzle/node_modules/is-arrayish/index.js"(exports, module) {
     module.exports = function isArrayish(obj) {
       if (!obj || typeof obj === "string") {
         return false;
@@ -32681,9 +29870,9 @@ var require_color_string = __commonJS({
   }
 });
 
-// node_modules/color-convert/node_modules/color-name/index.js
+// node_modules/color/node_modules/color-name/index.js
 var require_color_name2 = __commonJS({
-  "node_modules/color-convert/node_modules/color-name/index.js"(exports, module) {
+  "node_modules/color/node_modules/color-name/index.js"(exports, module) {
     "use strict";
     module.exports = {
       "aliceblue": [240, 248, 255],
@@ -32838,9 +30027,9 @@ var require_color_name2 = __commonJS({
   }
 });
 
-// node_modules/color-convert/conversions.js
+// node_modules/color/node_modules/color-convert/conversions.js
 var require_conversions = __commonJS({
-  "node_modules/color-convert/conversions.js"(exports, module) {
+  "node_modules/color/node_modules/color-convert/conversions.js"(exports, module) {
     var cssKeywords = require_color_name2();
     var reverseKeywords = {};
     for (key2 in cssKeywords) {
@@ -33551,9 +30740,9 @@ var require_conversions = __commonJS({
   }
 });
 
-// node_modules/color-convert/route.js
+// node_modules/color/node_modules/color-convert/route.js
 var require_route = __commonJS({
-  "node_modules/color-convert/route.js"(exports, module) {
+  "node_modules/color/node_modules/color-convert/route.js"(exports, module) {
     var conversions = require_conversions();
     function buildGraph() {
       var graph = {};
@@ -33619,9 +30808,9 @@ var require_route = __commonJS({
   }
 });
 
-// node_modules/color-convert/index.js
+// node_modules/color/node_modules/color-convert/index.js
 var require_color_convert = __commonJS({
-  "node_modules/color-convert/index.js"(exports, module) {
+  "node_modules/color/node_modules/color-convert/index.js"(exports, module) {
     var conversions = require_conversions();
     var route = require_route();
     var convert = {};
@@ -39473,8 +36662,8 @@ var import_types3 = __toModule(require_dist());
 var import_react2 = __toModule(require_react());
 
 // plugins/contants.ts
-var MARKET_CONTRACT_ADDRESS = df.ethConnection.getProvider().network.chainId == 31337 ? "0x78978D53E07E8A45830e2A623a3c58e2e1FecD4c" : "0x78978D53E07E8A45830e2A623a3c58e2e1FecD4c";
-var TOKENS_CONTRACT_ADDRESS = df.contractsAPI.contractAddress || "0x621ce133521c3B1cf11C0b9423406F01835af0ee";
+var MARKET_CONTRACT_ADDRESS = df.ethConnection.getProvider().network.chainId == 31337 ? "0x0aB898b2316f136822ce7f3EA6Adf617d6c1aE1e" : "0x0aB898b2316f136822ce7f3EA6Adf617d6c1aE1e";
+var TOKENS_CONTRACT_ADDRESS = df.contractsAPI.contractAddress || "0x9d8ef472b01566e8d88ea7f2438e9542032d300e";
 var TOKENS_APPROVAL_ABI = [
   {
     type: "function",
@@ -46722,7 +43911,7 @@ var VoidSigner = class extends Signer {
 };
 
 // node_modules/@ethersproject/signing-key/lib.esm/elliptic.js
-var import_bn2 = __toModule(require_bn2());
+var import_bn2 = __toModule(require_bn());
 var import_hash2 = __toModule(require_hash());
 var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
 function createCommonjsModule(fn, basedir, module) {

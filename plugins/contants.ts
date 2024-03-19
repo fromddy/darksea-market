@@ -1,12 +1,12 @@
 //@ts-expect-error
 export const MARKET_CONTRACT_ADDRESS =
   df.ethConnection.getProvider().network.chainId == 31337
-    ? "0x78978D53E07E8A45830e2A623a3c58e2e1FecD4c"
-    : "0x78978D53E07E8A45830e2A623a3c58e2e1FecD4c";
+    ? "0x0aB898b2316f136822ce7f3EA6Adf617d6c1aE1e"
+    : "0x0aB898b2316f136822ce7f3EA6Adf617d6c1aE1e";
 //@ts-expect-error
 export const TOKENS_CONTRACT_ADDRESS: string =
   df.contractsAPI.contractAddress ||
-  "0x621ce133521c3B1cf11C0b9423406F01835af0ee";
+  "0x9d8ef472b01566e8d88ea7f2438e9542032d300e";
 export const TOKENS_APPROVAL_ABI = [
   {
     type: "function",
