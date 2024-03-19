@@ -2,6 +2,10 @@
 
 # Update
 
+client bugs & hardhat version is too new (ether v6)
+don't use this branch
+
+
 ```
 npm install --force
 yarn start
