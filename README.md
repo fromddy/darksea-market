@@ -1,6 +1,8 @@
 # DarkSea Market on DFAres
 
-
+todo:  
+1. game client need to support info of Confirm Transaction
+2. info details
 
 
 # Classic DarkSea Market

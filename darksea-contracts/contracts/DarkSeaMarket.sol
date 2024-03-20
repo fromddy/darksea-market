@@ -218,14 +218,14 @@ contract DarkSeaMarket is Initializable, DarkSeaMarketStorage  {
 
     // collection owner functions
     function addByOwner(address token, uint256 fee, uint256 minPrice) external tokenNotExists(token) {
-        require(minPrice >= 0.01 ether, "Min Price must greater than 0.01");
+        require(minPrice >= 0.0001 ether, "Min Price must greater than 0.0001");
         Tokens t = Tokens(token);
         require(t.adminAddress() == msg.sender, "Not admin of the token");
         _addCollection(token, msg.sender, fee, minPrice);
     }
 
     function editByOwner(address token, uint256 fee, uint256 minPrice) external tokenExists(token) onlyCollectionOwner(token) {
-        require(minPrice >= 0.01 ether, "Min Price must greater than 0.01");
+        require(minPrice >= 0.0001 ether, "Min Price must greater than 0.0001");
         _editCollection(token, msg.sender, fee, minPrice);
     }
 

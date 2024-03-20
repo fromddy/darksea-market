@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import dfstyles from '../helpers/dfstyles';
+import styled, { css } from "styled-components";
+import dfstyles from "../helpers/dfstyles";
 
 export const Green = styled.span`
   color: ${dfstyles.colors.dfgreen};

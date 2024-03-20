@@ -26,10 +26,24 @@ library DarkForestTypes {
         PlanetaryShield,
         PhotoidCannon,
         BloomFilter,
-        BlackDomain
+        BlackDomain,
+        IceLink,
+        FireLink,
+        Kardashev,
+        Bomb,
+        StellarShield,
+        BlindBox,
+        Avatar
     }
 
-    enum ArtifactRarity {Unknown, Common, Rare, Epic, Legendary, Mythic}
+    enum ArtifactRarity {
+        Unknown,
+        Common,
+        Rare,
+        Epic,
+        Legendary,
+        Mythic
+    }
 
     // for NFTs
     struct Artifact {
