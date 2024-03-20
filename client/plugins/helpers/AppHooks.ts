@@ -79,6 +79,7 @@ export function useMyArtifacts(): Wrapper<Artifact[]> {
 export function useMyArtifactsList() {
     const myArtifactsMap = useMyArtifacts();
     return Array.from(myArtifactsMap.value?.values() || []);
+    
 }
 
 export function useListingArtifacts(market, poll: number | undefined = undefined) {

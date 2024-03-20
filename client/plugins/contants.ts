@@ -1,5 +1,6 @@
 //@ts-expect-error
-export const MARKET_CONTRACT_ADDRESS = df.ethConnection.getProvider().network.chainId == 300 ? "0x06187833f809E41511A68276369B72C480adA113" : "0x4F3Dce4014f804c313d9c28B513C99e40316Bd11";
+export const MARKET_CONTRACT_ADDRESS = '0xD08d8B518D1F432915270bDD7df88779326e09bc';
+// df.ethConnection.getProvider().network.chainId == 300 ? "0x06187833f809E41511A68276369B72C480adA113" : "0x4F3Dce4014f804c313d9c28B513C99e40316Bd11";
 //@ts-expect-error
 export const TOKENS_CONTRACT_ADDRESS : string = df.contractsAPI.contractAddress || "0x621ce133521c3B1cf11C0b9423406F01835af0ee";
 export const TOKENS_APPROVAL_ABI = [

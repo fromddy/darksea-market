@@ -1,0 +1,20 @@
+{
+  "name": "darksea-contracts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "hardhat:deploy": "npx hardhat ignition deploy ignition/modules/DarkSea.ts  --network hardhat",
+    "redstoneTestnet:deploy": "npx hardhat ignition deploy ignition/modules/DarkSea.ts  --network redstoneTestnet",
+    "format": "prettier --write ."
+  },
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@openzeppelin/contracts-upgradeable": "4.7.3",
+    "dotenv": "^16.4.5",
+    "hardhat": "^2.22.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.2"
+  }
+}
