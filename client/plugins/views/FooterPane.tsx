@@ -55,16 +55,19 @@ function WithdrawButton({ disabled }) {
 export function FooterPane() {
   const { balance } = useBalance();
 
+  // gitcoin link is valid now 2024.3.21
   return (
     <FooterBar>
       {`Balance: ${utils.formatEther(balance)} ${TOKEN_NAME} `}
       <WithdrawButton disabled={balance == 0} />
-      <Support
+      {/* <Support
         href="https://gitcoin.co/grants/4280/dark-sea-marketplace-in-dark-forest"
         target="_blank"
       >
         Support DarkSea
-      </Support>
+      </Support> */}
+
+      
     </FooterBar>
   );
 }

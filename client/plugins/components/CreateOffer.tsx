@@ -59,13 +59,20 @@ const Price = styled.div`
 `;
 
 const artifactTypes = _.range(ArtifactType.Avatar + 1)
-  .filter(x=>x!==ArtifactType.BlindBox && (x>=5 ||x<=0) && x!==ArtifactType.FireLink && x!==ArtifactType.IceLink) .map((i) => {
-  return (
-    <option value={i} key={i}>
-      {i > 0 ? ArtifactTypeNames[i] : "Any Type"}
-    </option>
-  );
-});
+  .filter(
+    (x) =>
+      x !== ArtifactType.BlindBox &&
+      (x >= 5 || x <= 0) &&
+      x !== ArtifactType.FireLink &&
+      x !== ArtifactType.IceLink,
+  )
+  .map((i) => {
+    return (
+      <option value={i} key={i}>
+        {i > 0 ? ArtifactTypeNames[i] : "Any Type"}
+      </option>
+    );
+  });
 
 const rarities = _.range(1, ArtifactRarity.Mythic + 1).map((i) => {
   return (

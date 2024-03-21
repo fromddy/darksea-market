@@ -10,11 +10,15 @@ import dfstyles from "../helpers/dfstyles";
 import { artifactFileName } from "../helpers/ArtifactUtils";
 
 export const ARTIFACT_URL =
-  "https://d2wspbczt15cqu.cloudfront.net/v0.6.0-artifacts/";
+  "https://dfares.xyz/public/df_ares_artifact_icons/";
 
 function getArtifactUrl(thumb: boolean, artifact: Artifact): string {
   const fileName = artifactFileName(true, thumb, artifact);
-  return ARTIFACT_URL + fileName;
+  // return ARTIFACT_URL + fileName;
+  const res = ARTIFACT_URL+artifact.artifactType+'.png';
+  //todo
+  console.log(res);
+  return res;
 }
 
 export function ArtifactImage({
@@ -28,12 +32,14 @@ export function ArtifactImage({
 }) {
   return (
     <Container width={size} height={size}>
-      <video width={size} height={size} loop autoPlay key={artifact.id}>
+      {/* <video width={size} height={size} loop autoPlay key={artifact.id}>
         <source
           src={getArtifactUrl(thumb || false, artifact)}
           type={"video/webm"}
         />
-      </video>
+      </video> */}
+      <img width={size} height={size} src={ARTIFACT_URL + artifact.artifactType + '.png'} />
+
     </Container>
   );
 }

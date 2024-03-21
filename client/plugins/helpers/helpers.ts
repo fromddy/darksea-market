@@ -3,12 +3,14 @@ import {
   MARKET_CONTRACT_ABI,
   TOKENS_CONTRACT_ADDRESS,
   TOKENS_APPROVAL_ABI,
+  GAME_ABI,
   notifyManager,
   own,
 } from "../contants";
 import { BigNumber, utils } from "ethers";
 import { _ } from "lodash";
 import { Upgrade } from "@dfares/types";
+import { artifactIdFromEthersBN, decodeArtifact,address } from "@dfares/serde";
 
 export async function getMarketContract() {
   //@ts-expect-error
@@ -21,13 +23,7 @@ export async function getTokenContract() {
 }
 
 export async function getAllArtifacts(contract) {
-  //todo
-  console.log('getAllArtifacts');
-  console.log(TOKENS_CONTRACT_ADDRESS);
   const artifacts = await contract.getAllItems(TOKENS_CONTRACT_ADDRESS);
-  console.log('getAllArifacts');
-
-  console.log(artifacts);
   return artifacts.filter((item) => item.status === 0);
 }
 
@@ -68,7 +64,7 @@ async function checkAndApprove() {
           }
           if (!a) {
             alert(
-              "[DarkSeaMarket] Set Approve Failed, please refresh the page.",
+              "[DarkSeaMarket] Set Approve Failed, please refresh the page."
             );
             reject(new Error("[DarkSeaMarket] call setApprove failed."));
           } else {
@@ -96,7 +92,7 @@ export async function callAction(
   overrids = {
     gasPrice: undefined,
     gasLimit: 2000000,
-  },
+  }
 ) {
   //@ts-expect-error
   if (!df.contractsAPI.txExecutor) {

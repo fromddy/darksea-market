@@ -25,7 +25,7 @@ export function InventoryPane() {
 
   let artifactChildren = my_artifacts
     .filter((artifact) => {
-      return artifact.artifactType <=16 && !artifact.onPlanetId;
+      return artifact.artifactType <= 16 && !artifact.onPlanetId;
     })
     .sort(sortByKey(sort))
     .map((artifact) => {

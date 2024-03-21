@@ -15,10 +15,11 @@ import {
   own,
 } from "../contants";
 import { ContractContext } from "./ContractContext";
-import { getAllArtifacts, getAllOffers, notify, log } from "./helpers";
+import { getAllArtifacts, getAllOffers, notify, log, getMarketArtifacts } from "./helpers";
 import { artifactIdFromEthersBN } from "@dfares/serde";
 import { utils } from "ethers";
 import { isSpaceShip } from "@dfares/gameLogic";
+import { getGameContract } from "./helpers";
 /**
  * React uses referential identity to detect changes, and rerender. Rather
  * than copying an object into a new object, to force a rerender, we can
@@ -45,7 +46,7 @@ export class Wrapper<T> {
 export function usePoll(
   cb: () => void,
   poll: number | undefined = undefined,
-  execFirst: boolean | undefined = undefined
+  execFirst: boolean | undefined = undefined,
 ) {
   useEffect(() => {
     if (execFirst) cb();
@@ -67,7 +68,7 @@ export const useContract = () => useContext(ContractContext);
 export function useMyArtifacts(): Wrapper<Artifact[]> {
   //@ts-expect-error
   const [myArtifacts, setMyArtifacts] = useState(
-    new Wrapper(df.getMyArtifactMap())
+    new Wrapper(df.getMyArtifactMap()),
   );
 
   useEffect(() => {
@@ -85,7 +86,7 @@ export function useMyArtifactsList() {
   const myArtifactsMap = useMyArtifacts();
 
   const res = Array.from(myArtifactsMap.value?.values() || []).filter(
-    (artifact) => isSpaceShip(artifact.artifactType) === false
+    (artifact) => isSpaceShip(artifact.artifactType) === false,
   );
 
   return res;
@@ -93,7 +94,7 @@ export function useMyArtifactsList() {
 
 export function useListingArtifacts(
   market,
-  poll: number | undefined = undefined
+  poll: number | undefined = undefined,
 ) {
   //const { market } = useContract();
   const [listingArtifacts, setListingArtifacts] = useState<
@@ -102,6 +103,7 @@ export function useListingArtifacts(
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | undefined>();
   const [lastRefreshTime, setLastRefreshTime] = useState(new Date().getTime());
+  const [notice, setNotice] = useState("");
 
   function buildArfifact({ item, artifact = undefined }) {
     const artifactId = artifactIdFromEthersBN(item.tokenID);
@@ -170,39 +172,29 @@ export function useListingArtifacts(
 
   const load = useCallback(async function load() {
     try {
-    
       log("Loading listing artifacts", "debug");
-      //todo
-      log("set last refresh time","debug");
+
       setLastRefreshTime(new Date().getTime());
-      log("[list] get all artifacts","debug");
-
-
       let artifacts = await getAllArtifacts(market);
-      log("[list] getPlayerArtifacts","debug");
       //@ts-expect-error
-      const afs = await df.contractsAPI.getPlayerArtifacts(
-        MARKET_CONTRACT_ADDRESS
+      const artifactsOwnedByMarket = await df.contractsAPI.getPlayerArtifacts(
+        MARKET_CONTRACT_ADDRESS,
       );
-
-
       const gas = {};
-      afs.forEach((a) => (gas[a.id] = a));
+      artifactsOwnedByMarket.forEach((a) => (gas[a.id] = a));
       artifacts = artifacts.map((item) =>
         buildArfifact({
           item: item,
           artifact: gas[artifactIdFromEthersBN(item.tokenID)],
-        })
+        }),
       );
       setListingArtifacts(new Wrapper(artifacts));
       log("Loading listing artifacts success", "debug");
     } catch (e) {
       // todo
-      console.log("list error");
-      console.log(e);
+      setNotice("Load Error - Please Refresh Client");
       log("error loading listing artifacts", "error", e);
       setError(e);
-      
     } finally {
       setLoading(false);
     }
@@ -225,12 +217,12 @@ export function useListingArtifacts(
   }, []);
 
   usePoll(load, poll, listingArtifacts.value.length == 0);
-  return { listingArtifacts, loading, error };
+  return { listingArtifacts, loading, error, notice };
 }
 
 export function useOfferArtifacts(
   market,
-  poll: number | undefined = undefined
+  poll: number | undefined = undefined,
 ) {
   //const { market } = useContract();
   const [offerArtifacts, setOfferArtifacts] = useState<
@@ -239,6 +231,7 @@ export function useOfferArtifacts(
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | undefined>();
   const [lastRefreshTime, setLastRefreshTime] = useState(new Date().getTime());
+  const [notice, setNotice] = useState("");
 
   async function onOfferChange(token, offerId) {
     log("On offer change", "info");
@@ -257,7 +250,8 @@ export function useOfferArtifacts(
       log("Loading offers success", "debug");
     } catch (e) {
       //todo
-      console.log('load');
+      setNotice("Load Error - Please Refresh Client");
+      console.log("load");
       console.log(e);
       log("error loading offers", "error", e);
       setError(e);
@@ -283,7 +277,7 @@ export function useOfferArtifacts(
   }, []);
 
   usePoll(load, poll, offerArtifacts.value.length == 0);
-  return { offerArtifacts, loading, error };
+  return { offerArtifacts, loading, error, notice };
 }
 
 export function useBalance() {

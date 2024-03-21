@@ -36,7 +36,10 @@ export function OfferPane({ mine }) {
   const [active, setActive] = useState(undefined);
   const [sort, setSort] = useState(defaultSort);
   const { market } = useContract();
-  const { offerArtifacts, loading } = useOfferArtifacts(market, 60000);
+  const { offerArtifacts, loading, error, notice } = useOfferArtifacts(
+    market,
+    60000,
+  );
   const offers = offerArtifacts.value || [];
 
   const offerChildren = offers
@@ -87,6 +90,8 @@ export function OfferPane({ mine }) {
       {!mine ? <Beware /> : ""}
       {loading ? (
         <Loading />
+      ) : notice.length !== 0 ? (
+        <div style={{ color: "red", textAlign: "center" }}>{notice}</div>
       ) : offerChildren.length ? (
         <table style={table}>
           <SortableOfferHeader

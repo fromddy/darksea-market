@@ -26,7 +26,10 @@ export function ListingPane({ mine }) {
   const [active, setActive] = useState(undefined);
   const [sort, setSort] = useState(defaultSort);
   const { market } = useContract();
-  const { listingArtifacts, loading } = useListingArtifacts(market, 60000);
+  const { listingArtifacts, loading, error, notice } = useListingArtifacts(
+    market,
+    60000,
+  );
   const artifacts = listingArtifacts.value || [];
 
   const artifactChildren = artifacts
@@ -85,6 +88,8 @@ export function ListingPane({ mine }) {
     <div style={listStyle}>
       {loading ? (
         <Loading />
+      ) : notice.length !== 0 ? (
+        <div style={{ color: "red", textAlign: "center" }}> {notice}</div>
       ) : artifactChildren.length ? (
         <table style={table}>
           <SortableHeader
