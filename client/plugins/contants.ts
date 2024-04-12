@@ -1,11 +1,13 @@
 //@ts-expect-error
 export const MARKET_CONTRACT_ADDRESS =
-  "0x048493E78Ea89f60088e7fEdE47F694b23ad87DE";
+  "0x384C8B28fed42F76c903f503ba85f0703a8B8774";
+  // "0x048493E78Ea89f60088e7fEdE47F694b23ad87DE";
 // df.ethConnection.getProvider().network.chainId == 300 ? "0x06187833f809E41511A68276369B72C480adA113" : "0x4F3Dce4014f804c313d9c28B513C99e40316Bd11";
 
 //@ts-expect-error
 export const TOKENS_CONTRACT_ADDRESS =
- '0x0560D24fE3dAdEb0E217a19b7b5e310DB7A76308'; //round3-test1
+"0x500cf53555c09948f4345594f9523e7b444cd67e";
+//  '0x0560D24fE3dAdEb0E217a19b7b5e310DB7A76308'; //round3-test1
   // "0x9d8ef472b01566e8d88ea7f2438e9542032d300e"; //round3-test
 // export const TOKENS_CONTRACT_ADDRESS : string = df.contractsAPI.contractAddress || "0x621ce133521c3B1cf11C0b9423406F01835af0ee";
 export const TOKENS_APPROVAL_ABI = [

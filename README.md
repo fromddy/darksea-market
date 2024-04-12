@@ -4,6 +4,10 @@ todo:
 1. game client need to support info of Confirm Transaction
 2. info details
 
+```javascript
+export { default } from "http://127.0.0.1:2222/DarkSeaMarketPlugin.js?dev";
+
+```
 
 # Classic DarkSea Market
 <div align="center">
