@@ -7,7 +7,7 @@ import {
   notifyManager,
   own,
 } from "../contants";
-import { BigNumber, utils } from "ethers";
+import { BigNumber, utils, Contract } from "ethers";
 import { _ } from "lodash";
 import { Upgrade } from "@dfares/types";
 import { artifactIdFromEthersBN, decodeArtifact,address } from "@dfares/serde";
@@ -19,11 +19,22 @@ export async function getMarketContract() {
 
 export async function getTokenContract() {
   //@ts-expect-error
+  const signer = df.getEthConnection().getSigner();
+  //@ts-expect-error
+  const provider = df.getEthConnection().getProvider();
+  const contract =  new Contract(TOKENS_CONTRACT_ADDRESS, TOKENS_APPROVAL_ABI, signer ?? provider)
+  return contract;
+
+  //@ts-expect-error
   return df.loadContract(TOKENS_CONTRACT_ADDRESS, TOKENS_APPROVAL_ABI);
 }
 
 export async function getAllArtifacts(contract) {
+
+  console.warn('TEST: getAllArtifacts');
   const artifacts = await contract.getAllItems(TOKENS_CONTRACT_ADDRESS);
+  console.log(artifacts);
+  console.log('TEST: end of get All artifacts');
   return artifacts.filter((item) => item.status === 0);
 }
 

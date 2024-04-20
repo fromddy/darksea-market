@@ -66,6 +66,10 @@ export function usePoll(
 export const useContract = () => useContext(ContractContext);
 
 export function useMyArtifacts(): Wrapper<Artifact[]> {
+
+  //TEST
+  // console.log('useMyArtifacts');
+
   //@ts-expect-error
   const [myArtifacts, setMyArtifacts] = useState(
     new Wrapper(df.getMyArtifactMap()),
@@ -96,6 +100,10 @@ export function useListingArtifacts(
   market,
   poll: number | undefined = undefined,
 ) {
+
+  //TEST
+  console.log('useListingArtifacts');
+
   //const { market } = useContract();
   const [listingArtifacts, setListingArtifacts] = useState<
     Wrapper<ListingArtifact[]>
@@ -141,11 +149,20 @@ export function useListingArtifacts(
   }
 
   async function onListingChange(token, listId) {
+    console.warn('TEST: onListingChange');
     log("On listing change", "info");
     const item = await market.getItem(TOKENS_CONTRACT_ADDRESS, listId);
+    console.warn('TEST');
+    console.warn(item);
+
     const artifact = buildArfifact({ item: item });
+    console.warn(artifact);
+
     if (new Date().getTime() - lastRefreshTime > 1000) {
-      load();
+      console.warn('TEST: before load');
+      await load();
+      console.warn('TEST: after load');
+
     }
     log(`Artifact ${artifact.id} update`, "info");
     if (artifact.owner === own || artifact.buyer === own) {
@@ -175,12 +192,24 @@ export function useListingArtifacts(
       log("Loading listing artifacts", "debug");
 
       setLastRefreshTime(new Date().getTime());
+      console.log('TEST: load Step 1');
       let artifacts = await getAllArtifacts(market);
+      console.log('artifacts');
+      console.log(artifacts);
+      console.log('TEST: load Step 2');
+
+      
       //@ts-expect-error
       const artifactsOwnedByMarket = await df.contractsAPI.getPlayerArtifacts(
         MARKET_CONTRACT_ADDRESS,
       );
+
+      console.log('TEST: load Step 3');
+      console.log('artifactsOwnedByMarket');
+      console.log(artifactsOwnedByMarket);
       const gas = {};
+
+
       artifactsOwnedByMarket.forEach((a) => (gas[a.id] = a));
       artifacts = artifacts.map((item) =>
         buildArfifact({
