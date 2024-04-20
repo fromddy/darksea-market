@@ -99,9 +99,9 @@ export function AdminPanel() {
   const [processing, setProcessing] = useState(false);
 
   const save = () => {
-    if (+price < 0.0001) {
-      alert("Min price must greater than 0.0001");
-      setPrice(0.0001);
+    if (+price < 0.00001) {
+      alert("Min price must greater than 0.00001");
+      setPrice(0.00001);
       return;
     }
     if (!processing) {
