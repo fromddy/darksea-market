@@ -3,23 +3,34 @@ import {
   MARKET_CONTRACT_ABI,
   TOKENS_CONTRACT_ADDRESS,
   TOKENS_APPROVAL_ABI,
-  GAME_ABI,
   notifyManager,
   own,
 } from "../contants";
-import { BigNumber, utils } from "ethers";
+import { BigNumber, utils, Contract } from "ethers";
 import { _ } from "lodash";
 import { Upgrade } from "@dfares/types";
 import { artifactIdFromEthersBN, decodeArtifact,address } from "@dfares/serde";
 
 export async function getMarketContract() {
   //@ts-expect-error
-  return df.loadContract(MARKET_CONTRACT_ADDRESS, MARKET_CONTRACT_ABI);
+  const signer = df.getEthConnection().getSigner();
+  //@ts-expect-error
+  const provider = df.getEthConnection().getProvider();
+  const contract =  new Contract(MARKET_CONTRACT_ADDRESS, MARKET_CONTRACT_ABI, signer ?? provider)
+  return contract;
+  // NOTE: Using df.loadContract may modify the parameters for client connecting to the smart contract.
+  // return df.loadContract(MARKET_CONTRACT_ADDRESS, MARKET_CONTRACT_ABI);
 }
 
 export async function getTokenContract() {
   //@ts-expect-error
-  return df.loadContract(TOKENS_CONTRACT_ADDRESS, TOKENS_APPROVAL_ABI);
+  const signer = df.getEthConnection().getSigner();
+  //@ts-expect-error
+  const provider = df.getEthConnection().getProvider();
+  const contract =  new Contract(TOKENS_CONTRACT_ADDRESS, TOKENS_APPROVAL_ABI, signer ?? provider)
+  return contract;
+  // NOTE: Using df.loadContract may modify the parameters for client connecting to the smart contract.
+  // return df.loadContract(TOKENS_CONTRACT_ADDRESS, TOKENS_APPROVAL_ABI);
 }
 
 export async function getAllArtifacts(contract) {
