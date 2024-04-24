@@ -1,6 +1,8 @@
 import { ArtifactRarityTypeLabelAnim } from "../components/labels/ArtifactLabels";
-import { Multiplier } from "../components/Multiplier";
-import { ArtifactDetail } from "../components/ArtifactDetail";
+import {
+  ArtifactDetail,
+  UpgradeStatMultiplierInfo,
+} from "../components/ArtifactDetail";
 import { listStyle, table, textCenter, warning } from "../helpers/styles";
 import { Btn } from "../components/Btn";
 import { sortByKey } from "../helpers/helpers";
@@ -8,6 +10,8 @@ import React, { useState, useEffect } from "react";
 import { useMyArtifactsList } from "../helpers/AppHooks";
 import { SortableHeader } from "../components/SortableHeader";
 import { Beware } from "../components/Beware";
+import { ArtifactType } from "@dfares/types";
+import { Multiplier } from "../components/Multiplier";
 
 const defaultSort = [{ key: "rarity", d: -1 }];
 
@@ -34,20 +38,51 @@ export function InventoryPane() {
           <td>
             <ArtifactRarityTypeLabelAnim artifact={artifact} isOffer={false} />
           </td>
+
           <td>
-            <Multiplier mult={artifact.upgrade.energyCapMultiplier} />
+            <Multiplier
+              mult={
+                (artifact.upgrade.energyCapMultiplier *
+                  artifact.timeDelayedUpgrade.energyCapMultiplier) /
+                100
+              }
+            />
           </td>
           <td>
-            <Multiplier mult={artifact.upgrade.energyGroMultiplier} />
+            <Multiplier
+              mult={
+                (artifact.upgrade.energyGroMultiplier *
+                  artifact.timeDelayedUpgrade.energyGroMultiplier) /
+                100
+              }
+            />
           </td>
           <td>
-            <Multiplier mult={artifact.upgrade.rangeMultiplier} />
+            <Multiplier
+              mult={
+                (artifact.upgrade.rangeMultiplier *
+                  artifact.timeDelayedUpgrade.rangeMultiplier) /
+                100
+              }
+            />
           </td>
           <td>
-            <Multiplier mult={artifact.upgrade.speedMultiplier} />
+            <Multiplier
+              mult={
+                (artifact.upgrade.speedMultiplier *
+                  artifact.timeDelayedUpgrade.speedMultiplier) /
+                100
+              }
+            />
           </td>
           <td>
-            <Multiplier mult={artifact.upgrade.defMultiplier} />
+            <Multiplier
+              mult={
+                (artifact.upgrade.defMultiplier *
+                  artifact.timeDelayedUpgrade.defMultiplier) /
+                100
+              }
+            />
           </td>
           <td>
             <Btn onClick={() => setActive(artifact)}>View</Btn>

@@ -1,7 +1,7 @@
 import { Input } from "./Input";
 import { Btn } from "./Btn";
 import { ButtonGroup } from "./CoreUI";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { callAction, getRandomActionId } from "../helpers/helpers";
 import { BigNumber, utils } from "ethers";
 import {
@@ -17,6 +17,12 @@ export function InventoryOpt({ artifact, onCancel }) {
   const [processing, setProcessing] = useState(false);
   const [price, setPrice] = useState("");
   const [show, setShow] = useState(true);
+
+  useEffect(() => {
+    return () => {
+      setPrice("");
+    };
+  }, []);
 
   function change(e) {
     const { value } = e.currentTarget;

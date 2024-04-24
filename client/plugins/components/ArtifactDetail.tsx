@@ -53,7 +53,29 @@ const StatsContainer = styled.div`
   width: 4em;
 `;
 
-function UpgradeStatInfo({
+export function UpgradeStatMultiplierInfo({
+  upgrades,
+  stat,
+}: {
+  upgrades: (Upgrade | undefined)[];
+  stat: number;
+}) {
+  let mult = 100;
+
+  for (const upgrade of upgrades) {
+    if (upgrade) {
+      mult *= getUpgradeStat(upgrade, stat) / 100;
+    }
+  }
+
+  return (
+    <div className="statrow">
+      <Multiplier mult={mult} />
+    </div>
+  );
+}
+
+export function UpgradeStatInfo({
   upgrades,
   stat,
 }: {
@@ -82,6 +104,7 @@ export function ArtifactDetail({ artifact, onCancel, offer }) {
       <ArtifactImage artifact={artifact} size={128} />
       <Spacer width={8} />
       <StatsContainer>
+        <div onClick={() => console.log(artifact.upgrade)}> click</div>
         {_.range(0, 5).map((val) => (
           <UpgradeStatInfo
             upgrades={[artifact.upgrade, artifact.timeDelayedUpgrade]}

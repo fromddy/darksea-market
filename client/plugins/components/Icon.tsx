@@ -142,12 +142,14 @@ const PriceSVG = ({ color }: { color?: string }) => (
   <DefaultSVG>
     <path
       style={{ fill: color || dfstyles.colors.text }}
+      // d="M11.944 17.97L4.58 13.62 11.943 24l7.37-10.38-7.372 4.35h.003zM12.056 0L4.69 12.223l7.365 4.354 7.365-4.35L12.056 0z"
       d="M212 40H40V126H212V40ZM298 40H470V126H298V40ZM126 384H212V470H126H40V384V298H126V384ZM298 384H384V298H470V384V470H384H298V384Z"
     ></path>
   </DefaultSVG>
 );
 
 export const PriceIcon = ({ color }: { color?: string }) => (
+  // <span> style={{color:color}}> ETH</span>
   <SVGWrapper>
     <PriceSVG color={color} />
   </SVGWrapper>

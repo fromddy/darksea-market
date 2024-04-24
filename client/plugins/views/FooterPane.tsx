@@ -66,8 +66,6 @@ export function FooterPane() {
       >
         Support DarkSea
       </Support> */}
-
-      
     </FooterBar>
   );
 }

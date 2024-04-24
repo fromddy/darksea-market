@@ -13,7 +13,7 @@
     "build": "df-plugin-dev-server bundle --glob plugins/*.tsx --outdir=dest/"
   },
   "dependencies": {
-    "@dfares/network": "6.8.7",
+    "@dfares/network": "6.8.12",
     "bufferutil": "^4.0.6",
     "n": "^7.3.1",
     "prettier": "^3.2.5",
@@ -21,12 +21,12 @@
     "yarn": "^1.22.11"
   },
   "devDependencies": {
-    "@dfares/constants": "6.8.7",
-    "@dfares/contracts": "6.8.7",
-    "@dfares/gamelogic": "6.8.7",
-    "@dfares/serde": "6.8.7",
-    "@dfares/snarks": "6.8.7",
-    "@dfares/types": "6.8.7",
+    "@dfares/constants": "6.8.12",
+    "@dfares/contracts": "6.8.12",
+    "@dfares/gamelogic": "6.8.12",
+    "@dfares/serde": "6.8.12",
+    "@dfares/snarks": "6.8.12",
+    "@dfares/types": "6.8.12",
     "@ethersproject/bignumber": "^5.2.0",
     "@ethersproject/units": "^5.1.0",
     "@openzeppelin/contracts": "^4.1.0",
@@ -36,7 +36,6 @@
     "dotenv": "^10.0.0",
     "esbuild": "^0.12.5",
     "eslint": "^7.26.0",
-    "ethereum-waffle": "^3.0.0",
     "ethers": "^5.0.0",
     "htm": "3.0.4",
     "preact": "^10.5.14",

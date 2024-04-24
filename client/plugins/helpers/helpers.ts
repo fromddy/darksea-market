@@ -9,14 +9,18 @@ import {
 import { BigNumber, utils, Contract } from "ethers";
 import { _ } from "lodash";
 import { Upgrade } from "@dfares/types";
-import { artifactIdFromEthersBN, decodeArtifact,address } from "@dfares/serde";
+import { artifactIdFromEthersBN, decodeArtifact, address } from "@dfares/serde";
 
 export async function getMarketContract() {
   //@ts-expect-error
   const signer = df.getEthConnection().getSigner();
   //@ts-expect-error
   const provider = df.getEthConnection().getProvider();
-  const contract =  new Contract(MARKET_CONTRACT_ADDRESS, MARKET_CONTRACT_ABI, signer ?? provider)
+  const contract = new Contract(
+    MARKET_CONTRACT_ADDRESS,
+    MARKET_CONTRACT_ABI,
+    signer ?? provider,
+  );
   return contract;
   // NOTE: Using df.loadContract may modify the parameters for client connecting to the smart contract.
   // return df.loadContract(MARKET_CONTRACT_ADDRESS, MARKET_CONTRACT_ABI);
@@ -27,7 +31,11 @@ export async function getTokenContract() {
   const signer = df.getEthConnection().getSigner();
   //@ts-expect-error
   const provider = df.getEthConnection().getProvider();
-  const contract =  new Contract(TOKENS_CONTRACT_ADDRESS, TOKENS_APPROVAL_ABI, signer ?? provider)
+  const contract = new Contract(
+    TOKENS_CONTRACT_ADDRESS,
+    TOKENS_APPROVAL_ABI,
+    signer ?? provider,
+  );
   return contract;
   // NOTE: Using df.loadContract may modify the parameters for client connecting to the smart contract.
   // return df.loadContract(TOKENS_CONTRACT_ADDRESS, TOKENS_APPROVAL_ABI);
@@ -75,7 +83,7 @@ async function checkAndApprove() {
           }
           if (!a) {
             alert(
-              "[DarkSeaMarket] Set Approve Failed, please refresh the page."
+              "[DarkSeaMarket] Set Approve Failed, please refresh the page.",
             );
             reject(new Error("[DarkSeaMarket] call setApprove failed."));
           } else {
@@ -103,7 +111,7 @@ export async function callAction(
   overrids = {
     gasPrice: undefined,
     gasLimit: 2000000,
-  }
+  },
 ) {
   //@ts-expect-error
   if (!df.contractsAPI.txExecutor) {

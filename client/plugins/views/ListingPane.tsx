@@ -6,14 +6,17 @@ import { Multiplier } from "../components/Multiplier";
 import styled from "styled-components";
 import { ArtifactRarityTypeLabelAnim } from "../components/labels/ArtifactLabels";
 import { Btn } from "../components/Btn";
-import { ArtifactDetail } from "../components/ArtifactDetail";
+import {
+  ArtifactDetail,
+  UpgradeStatMultiplierInfo,
+} from "../components/ArtifactDetail";
 import { own } from "../contants";
 import { Loading } from "../components/Loading";
 import { SortableHeader } from "../components/SortableHeader";
 import { useContract, useListingArtifacts } from "../helpers/AppHooks";
 
 const PriceCell = styled.div`
-  text-align: right;
+  text-align: center;
   padding-right: 5px;
 `;
 
@@ -43,20 +46,51 @@ export function ListingPane({ mine }) {
           <td>
             <ArtifactRarityTypeLabelAnim artifact={artifact} isOffer={false} />
           </td>
+
           <td>
-            <Multiplier mult={artifact.upgrade.energyCapMultiplier} />
+            <Multiplier
+              mult={
+                (artifact.upgrade.energyCapMultiplier *
+                  artifact.timeDelayedUpgrade.energyCapMultiplier) /
+                100
+              }
+            />
           </td>
           <td>
-            <Multiplier mult={artifact.upgrade.energyGroMultiplier} />
+            <Multiplier
+              mult={
+                (artifact.upgrade.energyGroMultiplier *
+                  artifact.timeDelayedUpgrade.energyGroMultiplier) /
+                100
+              }
+            />
           </td>
           <td>
-            <Multiplier mult={artifact.upgrade.rangeMultiplier} />
+            <Multiplier
+              mult={
+                (artifact.upgrade.rangeMultiplier *
+                  artifact.timeDelayedUpgrade.rangeMultiplier) /
+                100
+              }
+            />
           </td>
           <td>
-            <Multiplier mult={artifact.upgrade.speedMultiplier} />
+            <Multiplier
+              mult={
+                (artifact.upgrade.speedMultiplier *
+                  artifact.timeDelayedUpgrade.speedMultiplier) /
+                100
+              }
+            />
           </td>
           <td>
-            <Multiplier mult={artifact.upgrade.defMultiplier} />
+            <Multiplier
+              mult={
+                (artifact.upgrade.defMultiplier *
+                  artifact.timeDelayedUpgrade.defMultiplier) /
+                100
+              }
+            />
           </td>
           <td>
             <PriceCell>{utils.formatEther(artifact.price)}</PriceCell>

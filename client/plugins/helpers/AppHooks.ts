@@ -15,7 +15,13 @@ import {
   own,
 } from "../contants";
 import { ContractContext } from "./ContractContext";
-import { getAllArtifacts, getAllOffers, notify, log, getMarketArtifacts } from "./helpers";
+import {
+  getAllArtifacts,
+  getAllOffers,
+  notify,
+  log,
+  getMarketArtifacts,
+} from "./helpers";
 import { artifactIdFromEthersBN } from "@dfares/serde";
 import { utils } from "ethers";
 import { isSpaceShip } from "@dfares/gameLogic";
