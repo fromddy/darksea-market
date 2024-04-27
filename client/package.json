@@ -1,9 +1,8 @@
 {
-  "name": "df-artifact-market",
+  "name": "@dfares/darksea",
   "version": "1.0.5",
   "license": "GPL-3.0",
-  "private": true,
-  "files": [],
+  "files": ["dest"],
   "engines": {
     "node": "^16"
   },
