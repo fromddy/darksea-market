@@ -1,6 +1,6 @@
 {
   "name": "@dfares/darksea",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "license": "GPL-3.0",
   "files": ["dest"],
   "engines": {
