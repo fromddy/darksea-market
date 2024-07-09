@@ -37,6 +37,8 @@ const redstoneTestnet = {
         mnemonic: process.env.DEPLOYER_MNEMONIC,
     },
     chainId: Number(process.env.REDSTONE_TESTNET_CHAINID),
+    gasMultiplier: 5,
+    gasPrice: 100,
 }
 
 const redstone = {
