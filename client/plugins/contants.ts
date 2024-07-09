@@ -4,13 +4,14 @@ import DarkForestABI from "./contract-abi/DarkForest.json";
 export const MARKET_CONTRACT_ADDRESS =
   "0xbf54A070E443890074C4aEE9E4666BC4b94519eB"; //round3-test3
   // "0x41ED5eA4478C9947cE513BEFE9dC6a3625119D94";
-// "0x3775d393bB86EBcBB3307f1f7055221BE4cDC14a"; //round3-test2
+"0x3775d393bB86EBcBB3307f1f7055221BE4cDC14a"; //round3-test2 & round3 daily test
 // "0x384C8B28fed42F76c903f503ba85f0703a8B8774";
 // "0x048493E78Ea89f60088e7fEdE47F694b23ad87DE";
 // df.ethConnection.getProvider().network.chainId == 300 ? "0x06187833f809E41511A68276369B72C480adA113" : "0x4F3Dce4014f804c313d9c28B513C99e40316Bd11";
 
 export const TOKENS_CONTRACT_ADDRESS =
-  "0xa0e198cbd1b5f8749f57aa8d60a8660d23b96957"; //round3
+  '0xf9a0673c9a9F2375287f87320c30Ed493386A3C6';   //round3 daily test
+  // "0xa0e198cbd1b5f8749f57aa8d60a8660d23b96957"; //round3
 // "0xb987b301559f579d3384e31e4c2fd3afe5ac687f"; //round3-test3
 // "0xc2eed1adaae36b640f64c06fef8cd32f7473afaa";
 // "0x168037e0651820690c6952Cbb89ED29716B276AE"; //round3-test2
